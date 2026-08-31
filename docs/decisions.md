@@ -62,3 +62,49 @@ single `openai`-SDK-shaped client rather than adding a second SDK, and the provi
 base URL, model names and key all come from `.env` so swapping to any other
 OpenAI-compatible provider, including the aipipe.org proxy already present in this
 shell, is a configuration change, not a rewrite.
+
+## M2-01 Any FAIL forces overall FAIL, regardless of severity
+
+`backend/app/services/report.py` sets `overall_status = FAIL` whenever any requirement
+FAILs, not only when a critical one does. A low severity FAIL still means a real
+requirement was not met, and softening the headline verdict for it would undercut the
+evidence-first, no-false-reassurance principle in section 7 of the brief. Severity still
+drives ordering and the critical failure count shown separately in the summary.
+
+## M2-02 Presentation rules default to NEEDS_REVIEW, not PASS, as the expected status
+
+RULE-IN-FOOD-012 and RULE-UK-FOOD-011 (character height and x-height) cannot be verified
+from an image without a real physical measurement pipeline, which is out of scope per
+M1-03. The first draft of the IN-001 and UK-001 annotations set `expected_overall` to
+PASS while still marking these two rules NEEDS_REVIEW, which is self-contradictory given
+M2-01: any NEEDS_REVIEW makes the overall status NEEDS_REVIEW. Fixed by making
+NEEDS_REVIEW the primary expected status for both rules in every case, with PASS as an
+accepted alternative, and correcting `expected_overall` on the two compliant cases to
+NEEDS_REVIEW. This is also the philosophically consistent choice: a system that admits
+it cannot verify a physical measurement from a photo should be rewarded for saying so,
+not pushed toward a confident PASS it cannot actually support.
+
+## M2-03 Evidence grounding metric treats vision_observation evidence as unverifiable, not ungrounded
+
+`evaluation/evaluate.py` checks whether a finding's evidence snippet is a literal
+substring of the OCR text. The first baseline run showed this unfairly penalising
+genuinely visual claims, for example "green square symbol with a green circle inside"
+for the veg mark, which can never appear in OCR text by definition. Evidence tagged
+`vision_observation` is now counted as grounded automatically rather than requiring a
+text match. The baseline itself still tags this kind of evidence as plain `ocr_text`
+rather than `vision_observation`, since its single prompt does not distinguish evidence
+modality, so its measured grounding rate (0.352 on the Milestone 2 run) is a real,
+lower number, not an artifact of the metric. See IMPROVEMENT_CHANGELOG.md.
+
+## M2-04 Baseline gets rule text and applicability conditions, but not pack dimensions
+
+The baseline prompt in `backend/app/agents/baseline_agent.py` includes the full rule
+pack (id, requirement, severity, applicability summary and conditions, source
+reference) and the image and OCR text, matching the brief's requirement that baseline
+and agent receive the same rule information. It does not receive
+`ProductContext.pack_largest_surface_cm2` or `principal_panel_area_cm2`, even though
+`evaluation/evaluate.py` now wires those through from each case. A genuinely naive
+single-prompt baseline would not think to ask for or use pack dimensions either, so
+leaving them out keeps the baseline a fair "reasonable naive implementation" per
+section 8, rather than quietly giving it a capability a naive implementation would not
+have. The Milestone 3 agent is free to use them in its compliance step.

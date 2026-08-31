@@ -1,0 +1,46 @@
+{
+  "case_id": "IN-003",
+  "title": "Peanut chikki missing allergen Contains statement",
+  "jurisdiction": "IN",
+  "product_category": "packaged_food",
+  "difficulty": "medium",
+  "image": "evaluation/images/IN-003.png",
+  "context": {"imported": false, "single_ingredient": false},
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 10.0,
+      "height_cm": 16.0,
+      "principal_panel_area_cm2": 64.0,
+      "largest_surface_area_cm2": 160.0,
+      "background": "#fff8ec"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {"type": "text", "text": "KONKAN SWEETS", "font_px": 32, "bold": true},
+          {"type": "text", "text": "Roasted Peanut Chikki", "font_px": 24, "bold": true},
+          {"type": "symbol", "symbol": "veg_green", "height_px": 28},
+          {"type": "text", "text": "Net Wt. 250 g", "font_px": 18},
+          {"type": "text", "text": "MRP Rs. 90 (incl. of all taxes)", "font_px": 14}
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {"type": "text", "text": "Ingredients: Roasted peanuts (55%), Jaggery, Edible vegetable oil (groundnut oil)", "font_px": 14},
+          {"type": "text", "text": "Nutritional Information (per 100 g): Energy 512 kcal, Protein 14.0 g, Carbohydrate 58.0 g, Total Sugars 40.0 g, Total Fat 26.0 g, Sodium 15 mg", "font_px": 13},
+          {"type": "text", "text": "Manufactured by: Konkan Sweets and Snacks, Shop No. 4, MG Road, Ratnagiri 415612, Maharashtra, India", "font_px": 13},
+          {"type": "symbol", "symbol": "fssai_logo", "height_px": 26},
+          {"type": "text", "text": "Lic. No. 10820331004456", "font_px": 14},
+          {"type": "text", "text": "Batch No. KS0912", "font_px": 14},
+          {"type": "text", "text": "Date of Manufacture: 07/2026   Use by: 01/2027", "font_px": 14},
+          {"type": "text", "text": "Store in a cool dry place", "font_px": 13},
+          {"type": "text", "text": "Customer Care: hello@konkansweets.example, 1800 111 2233", "font_px": 13}
+        ]
+      }
+    ]
+  },
+  "notes": "Ingredients clearly list peanuts, a listed allergen, but no separate Contains statement is printed anywhere. Isolated single violation."
+}

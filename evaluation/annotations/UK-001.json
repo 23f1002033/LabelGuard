@@ -1,0 +1,20 @@
+{
+  "case_id": "UK-001",
+  "expected_overall": "NEEDS_REVIEW",
+  "expected_findings": [
+    {"rule_id": "RULE-UK-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-003", "expected_status": "PASS", "rationale": "WHEAT FLOUR and WHOLE MILK POWDER are shown in capitals, distinct from the rest of the ingredients list."},
+    {"rule_id": "RULE-UK-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-006", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-007", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-009", "expected_status": "NOT_APPLICABLE", "accept_also": ["PASS"], "rationale": "No misleading origin imagery or claim is present, so an explicit country of origin statement is not mandatory here."},
+    {"rule_id": "RULE-UK-FOOD-010", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-011", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-012", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "Reference compliant case for measuring false positives under the UK rule pack.",
+  "notes": "Same style of product as IN-001 but formatted to UK requirements, useful alongside IN-001 to illustrate how the same category of product is labelled differently in each market. Expected overall is NEEDS_REVIEW, not PASS, for the same reason as IN-001: RULE-UK-FOOD-011 (x-height) is expected NEEDS_REVIEW."
+}

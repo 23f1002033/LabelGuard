@@ -1,0 +1,21 @@
+{
+  "case_id": "IN-003",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {"rule_id": "RULE-IN-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-003", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-006", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-007", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-009", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-010", "expected_status": "NOT_APPLICABLE"},
+    {"rule_id": "RULE-IN-FOOD-011", "expected_status": "FAIL", "rationale": "Peanuts appear in the ingredients list but there is no separate Contains statement naming the allergen."},
+    {"rule_id": "RULE-IN-FOOD-012", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-IN-FOOD-013", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "The word peanuts appears plainly in the ingredients list, which can fool a naive system into treating the allergen requirement as satisfied by the ingredients list alone rather than requiring the separate Contains statement.",
+  "notes": "Tests whether the system distinguishes an ingredients mention from the required separate declaration."
+}

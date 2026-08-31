@@ -1,0 +1,43 @@
+{
+  "case_id": "UK-001",
+  "system": "baseline",
+  "events": [
+    {
+      "timestamp": "2026-08-31T14:01:41.819891Z",
+      "agent": "baseline",
+      "step": "load_rule_pack",
+      "input_reference": "",
+      "tool_used": "rules.load_rule_pack",
+      "result": "12 rules loaded",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:01:42.079157Z",
+      "agent": "baseline",
+      "step": "ocr_extract",
+      "input_reference": "",
+      "tool_used": "pytesseract",
+      "result": "568 characters extracted",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:02:07.605481Z",
+      "agent": "baseline",
+      "step": "single_llm_call",
+      "input_reference": "",
+      "tool_used": "llm:UK",
+      "result": "12 findings returned",
+      "decision": "single prompt produced full report, no separate verification"
+    },
+    {
+      "timestamp": "2026-08-31T14:02:07.606109Z",
+      "agent": "baseline",
+      "step": "report_generated",
+      "input_reference": "",
+      "tool_used": "",
+      "result": "NEEDS_REVIEW",
+      "decision": "",
+      "duration_ms": 25788
+    }
+  ]
+}

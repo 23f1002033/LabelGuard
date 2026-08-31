@@ -164,15 +164,25 @@ model training, live regulation crawling at request time.
 
 ## 10. Known risks
 
-1. No working model credential in the environment yet. Mitigation: `LABELGUARD_MODE=mock`
-   with recorded fixtures so the demo, tests and pipeline are runnable, and a real
-   Gemini key supplied through `.env` for the measured runs.
+1. Resolved in Milestone 2: a working Gemini key is now in `.env` and verified against
+   both the text and vision endpoints. `LABELGUARD_MODE=mock` still exists as a zero
+   token, offline fallback for the test suite (`backend/app/agents/baseline_agent.py`),
+   not for measured metrics.
 2. OCR quality on synthetic labels is good, which can flatter the extraction stage
-   relative to real photographs. Mitigation: the case set includes rotation, blur and
-   low contrast variants driven by the `pack` block of the label spec.
-3. Physical size rules (mm and x-height) are not measurable from an image alone.
-   Mitigation: they are computed only when the case or the user supplies pack
-   dimensions, and reported as NEEDS_REVIEW otherwise.
-4. Synthetic labels are not real product photographs, so absolute numbers are not a
+   relative to real photographs. The renderer supports rotation, blur and noise
+   through the `pack` block of the label spec, but none of the 7 Milestone 2 cases use
+   them yet; harder variants are planned for the Milestone 4 case set expansion.
+3. The baseline is already observed to be non-deterministic at temperature 0: the same
+   case, same model, back-to-back runs, produced a different FAIL/PASS verdict on one
+   requirement. See IMPROVEMENT_CHANGELOG.md "Baseline observation 2". This affects how
+   much weight any single evaluation run can bear, agent and baseline alike.
+4. Physical size rules (mm and x-height) are not measurable from an image alone.
+   Mitigation: pack dimensions are now wired from the case's `label_spec.pack` into
+   `ProductContext` in `evaluation/evaluate.py`, but neither the baseline prompt nor a
+   dedicated agent step actually uses them yet to compute a real mm measurement, so
+   these two rules are annotated NEEDS_REVIEW as the primary expected status in every
+   case, not FAIL or PASS, and both baseline and future agent are expected to land
+   there rather than overclaim.
+5. Synthetic labels are not real product photographs, so absolute numbers are not a
    claim about field performance. The comparison between baseline and agent is fair
    because both see identical inputs.

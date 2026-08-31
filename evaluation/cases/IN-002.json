@@ -1,0 +1,46 @@
+{
+  "case_id": "IN-002",
+  "title": "Butter cookies missing net quantity",
+  "jurisdiction": "IN",
+  "product_category": "packaged_food",
+  "difficulty": "easy",
+  "image": "evaluation/images/IN-002.png",
+  "context": {"imported": false, "single_ingredient": false},
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 12.0,
+      "height_cm": 18.0,
+      "principal_panel_area_cm2": 86.4,
+      "largest_surface_area_cm2": 216.0,
+      "background": "#fdfaf3"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {"type": "text", "text": "GOLDENCRUMB", "font_px": 34, "bold": true},
+          {"type": "text", "text": "Classic Butter Cookies", "font_px": 26, "bold": true},
+          {"type": "symbol", "symbol": "veg_green", "height_px": 30},
+          {"type": "text", "text": "MRP Rs. 45 (incl. of all taxes)", "font_px": 14}
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {"type": "text", "text": "Ingredients: Wheat flour, Butter (milk), Sugar, Baking powder, Salt, Vanilla flavour", "font_px": 14},
+          {"type": "text", "text": "Contains: Wheat, Milk", "font_px": 14, "bold": true},
+          {"type": "text", "text": "Nutritional Information (per 100 g): Energy 495 kcal, Protein 6.2 g, Carbohydrate 62.0 g, Total Sugars 22.0 g, Total Fat 24.5 g, Sodium 210 mg", "font_px": 13},
+          {"type": "text", "text": "Manufactured by: GoldenCrumb Bakers Pvt Ltd, C-9 Industrial Estate, Nashik 422101, Maharashtra, India", "font_px": 13},
+          {"type": "symbol", "symbol": "fssai_logo", "height_px": 26},
+          {"type": "text", "text": "Lic. No. 10419887001122", "font_px": 14},
+          {"type": "text", "text": "Batch No. GC0731", "font_px": 14},
+          {"type": "text", "text": "Date of Manufacture: 06/2026   Use by: 12/2026", "font_px": 14},
+          {"type": "text", "text": "Store in an airtight container in a cool dry place", "font_px": 13},
+          {"type": "text", "text": "Customer Care: support@goldencrumb.example, 1800 300 7788", "font_px": 13}
+        ]
+      }
+    ]
+  },
+  "notes": "Isolated single violation: net quantity is never declared anywhere on the pack. Everything else mirrors a compliant label."
+}

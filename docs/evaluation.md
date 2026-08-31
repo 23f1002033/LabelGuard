@@ -45,9 +45,15 @@ false negative.
 - false positive rate: false positives divided by the number of requirements the
   annotation marks PASS or NOT_APPLICABLE.
 - applicability accuracy: exact match on requirements annotated NOT_APPLICABLE.
-- evidence grounding rate: fraction of reported findings whose evidence either quotes a
-  string present in the extracted OCR text, or is an explicit absence claim about a
-  fact that is genuinely absent from the extracted facts.
+- evidence grounding rate: fraction of reported findings, among those that cited any
+  evidence, where the evidence is checkable and checks out: a snippet that literally
+  appears in the OCR text, an explicit absence claim on a FAIL or NEEDS_REVIEW finding,
+  or a claim tagged as a visual observation (evidence.kind = vision_observation), which
+  cannot be substring-matched against OCR text by definition and is treated as
+  unverifiable-by-this-metric rather than ungrounded. A system that tags genuinely
+  visual claims (a symbol, a colour, a logo) as plain text evidence will score lower
+  here than one that tags its evidence kind correctly, which is itself a meaningful
+  signal about evidence discipline.
 - coverage: fraction of applicable rules the system actually returned a status for.
 - verifier rejection count and what it changed, agent system only.
 - runtime per case and token usage per case.
