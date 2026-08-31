@@ -1,0 +1,269 @@
+{
+  "jurisdiction": "UK",
+  "jurisdiction_name": "United Kingdom (Great Britain)",
+  "product_category": "packaged_food",
+  "pack_version": "2026-08-31.1",
+  "retrieved_on": "2026-08-31",
+  "scope_note": "Selected mandatory label particulars for prepacked food sold in Great Britain, taken from current GOV.UK and Food Standards Agency business guidance on the Food Information Regulations 2014 and assimilated Regulation (EU) No 1169/2011. This pack is a bounded MVP subset. Prepacked for direct sale rules, Northern Ireland specific requirements, and product specific compositional standards are out of scope.",
+  "sources": [
+    {
+      "source_id": "GOVUK-FIC-GUIDE",
+      "name": "Food labelling: giving food information to consumers",
+      "publisher": "GOV.UK (Department for Environment, Food and Rural Affairs)",
+      "url": "https://www.gov.uk/guidance/food-labelling-giving-food-information-to-consumers",
+      "retrieved_on": "2026-08-31"
+    },
+    {
+      "source_id": "GOVUK-LABEL-SHOW",
+      "name": "Food labelling and packaging: what you must show",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/food-labelling-and-packaging/food-labelling-what-you-must-show",
+      "retrieved_on": "2026-08-31"
+    },
+    {
+      "source_id": "GOVUK-INGREDIENTS",
+      "name": "Food labelling and packaging: ingredients list",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/food-labelling-and-packaging/ingredients-list",
+      "retrieved_on": "2026-08-31"
+    },
+    {
+      "source_id": "GOVUK-WARNINGS",
+      "name": "Food labelling and packaging: food and drink warnings",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/food-labelling-and-packaging/food-and-drink-warnings",
+      "retrieved_on": "2026-08-31"
+    },
+    {
+      "source_id": "FSA-ALLERGEN-TG",
+      "name": "Food allergen labelling and information requirements technical guidance",
+      "publisher": "Food Standards Agency",
+      "url": "https://www.food.gov.uk/business-guidance/allergen-guidance-for-food-businesses",
+      "retrieved_on": "2026-08-31"
+    },
+    {
+      "source_id": "GOVUK-NUTRITION",
+      "name": "Food labelling and packaging: nutrition, health claims and supplement labelling",
+      "publisher": "GOV.UK",
+      "url": "https://www.gov.uk/food-labelling-and-packaging/nutrition-health-claims-and-supplement-labelling",
+      "retrieved_on": "2026-08-31"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "RULE-UK-FOOD-001",
+      "jurisdiction": "UK",
+      "category": "identity",
+      "requirement": "The label must show the name of the food.",
+      "severity": "critical",
+      "source_id": "GOVUK-LABEL-SHOW",
+      "source_reference": "Food labelling and packaging: what you must show",
+      "source_excerpt": "the name of the food",
+      "applicability": {"summary": "All prepacked food.", "always_applies": true},
+      "validation_type": "text",
+      "required_facts": ["product_name"],
+      "evidence_hint": "Descriptive product name on the front panel. A brand name alone is not the name of the food.",
+      "suggested_fix": "Show a customary or descriptive name of the food on the label."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-002",
+      "jurisdiction": "UK",
+      "category": "ingredients",
+      "requirement": "Where the product has two or more ingredients, all ingredients must be listed in descending order by weight.",
+      "severity": "critical",
+      "source_id": "GOVUK-INGREDIENTS",
+      "source_reference": "Food labelling and packaging: ingredients list",
+      "source_excerpt": "If your food or drink product has 2 or more ingredients (including water and additives), you must list them all.",
+      "applicability": {
+        "summary": "Prepacked food with two or more ingredients.",
+        "always_applies": false,
+        "conditions": [{"fact": "single_ingredient_food", "operator": "equals", "value": false}]
+      },
+      "validation_type": "text",
+      "required_facts": ["ingredients_text", "ingredients_list"],
+      "evidence_hint": "Ingredients heading followed by the list, heaviest ingredient first.",
+      "suggested_fix": "Add a full ingredients list in descending order of weight."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-003",
+      "jurisdiction": "UK",
+      "category": "allergens",
+      "requirement": "Any of the 14 regulated allergens present must be named in the ingredients list and emphasised so they stand out from the rest of the list.",
+      "severity": "critical",
+      "source_id": "GOVUK-INGREDIENTS",
+      "source_reference": "Food labelling and packaging: ingredients list, allergen emphasis",
+      "source_excerpt": "You must highlight allergens on the label using a different font, style or background colour.",
+      "applicability": {
+        "summary": "Where the product contains one or more of the 14 allergens listed in assimilated Regulation (EU) No 1169/2011 Annex II.",
+        "always_applies": false,
+        "conditions": [{"fact": "contains_listed_allergen", "operator": "is_true"}]
+      },
+      "validation_type": "hybrid",
+      "required_facts": ["ingredients_list", "emphasised_allergens", "allergen_statement"],
+      "evidence_hint": "Allergen words inside the ingredients list shown in bold, capitals, underline or a contrasting background. A separate Contains box is not a substitute for emphasis in the list.",
+      "suggested_fix": "Emphasise each regulated allergen inside the ingredients list, for example in bold.",
+      "notes": "The 14 allergens are celery, cereals containing gluten, crustaceans, eggs, fish, lupin, milk, molluscs, mustard, nuts, peanuts, sesame, soya and sulphur dioxide or sulphites above 10 mg/kg or 10 mg/l."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-004",
+      "jurisdiction": "UK",
+      "category": "quantity",
+      "requirement": "The label must show the net quantity of the food by weight or volume.",
+      "severity": "critical",
+      "source_id": "GOVUK-LABEL-SHOW",
+      "source_reference": "Food labelling and packaging: what you must show",
+      "source_excerpt": "net quantity information",
+      "applicability": {"summary": "All prepacked food.", "always_applies": true},
+      "validation_type": "text",
+      "required_facts": ["net_quantity"],
+      "evidence_hint": "Quantity such as 250g or 500ml, normally in the same field of vision as the name.",
+      "suggested_fix": "Declare net quantity in metric units on the label."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-005",
+      "jurisdiction": "UK",
+      "category": "date_marking",
+      "requirement": "The label must show a best before or use by date where one is required, and a use by date must be used where there is a safety issue with eating the food after that date.",
+      "severity": "critical",
+      "source_id": "GOVUK-FIC-GUIDE",
+      "source_reference": "Food labelling: giving food information to consumers, date marking",
+      "source_excerpt": "Only show a 'use by' date where there's a safety issue with eating the food after this date. It's a criminal offence to sell food that's past its 'use by' date.",
+      "applicability": {
+        "summary": "Prepacked food that requires a date mark. A small number of categories such as fresh fruit and vegetables, wine and salt are exempt.",
+        "always_applies": false,
+        "conditions": [{"fact": "date_marking_exempt_category", "operator": "equals", "value": false}]
+      },
+      "validation_type": "text",
+      "required_facts": ["best_before_date", "use_by_date"],
+      "evidence_hint": "Best before or use by date printed on the pack, with the date or a pointer to where the date is shown.",
+      "suggested_fix": "Print a best before or use by date, choosing use by where the food is highly perishable."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-006",
+      "jurisdiction": "UK",
+      "category": "business_info",
+      "requirement": "The label must show the name and address of the food business operator under whose name the food is marketed, or of the importer, and for food sold in Great Britain this must be a UK address.",
+      "severity": "high",
+      "source_id": "GOVUK-FIC-GUIDE",
+      "source_reference": "Food labelling: giving food information to consumers, name and address of the food business operator",
+      "source_excerpt": "This must be either: the name of the business whose name the food is marketed under ... the address of the business that has imported the food. From 1 January 2024 pre-packaged food or caseins sold in GB must include a UK address for the FBO.",
+      "applicability": {"summary": "All prepacked food sold in Great Britain.", "always_applies": true},
+      "validation_type": "text",
+      "required_facts": ["business_name_address", "importer_name_address"],
+      "evidence_hint": "Address block on the back or side panel including a UK address and postcode.",
+      "suggested_fix": "Add the food business operator name with a full UK address."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-007",
+      "jurisdiction": "UK",
+      "category": "usage",
+      "requirement": "Any special storage conditions and any instructions for use or cooking that are necessary must be shown on the label.",
+      "severity": "medium",
+      "source_id": "GOVUK-LABEL-SHOW",
+      "source_reference": "Food labelling and packaging: what you must show",
+      "source_excerpt": "any special storage conditions ... instructions for use or cooking, if necessary",
+      "applicability": {
+        "summary": "Where the food needs particular storage or preparation to be used safely and properly.",
+        "always_applies": false,
+        "conditions": [{"fact": "needs_storage_or_use_instructions", "operator": "is_true"}]
+      },
+      "validation_type": "text",
+      "required_facts": ["storage_instructions", "usage_instructions"],
+      "evidence_hint": "Text such as Keep refrigerated, Store in a cool dry place, or cooking directions.",
+      "suggested_fix": "Add the storage conditions and preparation instructions the product needs.",
+      "needs_professional_review": true
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-008",
+      "jurisdiction": "UK",
+      "category": "traceability",
+      "requirement": "The label must carry a lot number, unless a use by or best before date marked with day and month serves that purpose.",
+      "severity": "medium",
+      "source_id": "GOVUK-LABEL-SHOW",
+      "source_reference": "Food labelling and packaging: what you must show",
+      "source_excerpt": "the lot number or use-by date",
+      "applicability": {"summary": "All prepacked food.", "always_applies": true},
+      "validation_type": "text",
+      "required_facts": ["batch_or_lot", "use_by_date", "best_before_date"],
+      "evidence_hint": "Text such as Lot or L followed by an identifier, or a date mark including the day and month.",
+      "suggested_fix": "Print a lot marking, or a date mark that identifies the day and month."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-009",
+      "jurisdiction": "UK",
+      "category": "origin",
+      "requirement": "The country of origin or place of provenance must be given where it is required, including where the labelling would otherwise imply a different origin.",
+      "severity": "high",
+      "source_id": "GOVUK-FIC-GUIDE",
+      "source_reference": "Food labelling: giving food information to consumers, country of origin",
+      "source_excerpt": "State a product's country of origin or place of provenance on the label if the words or pictures on the packaging imply that it comes from somewhere else.",
+      "applicability": {
+        "summary": "Where origin is mandatory for the product type, or where the label could mislead about origin.",
+        "always_applies": false,
+        "conditions": [{"fact": "origin_declaration_required", "operator": "is_true"}]
+      },
+      "validation_type": "hybrid",
+      "required_facts": ["country_of_origin"],
+      "evidence_hint": "Origin statement such as Product of ... , compared against flags, place names or imagery on the pack.",
+      "suggested_fix": "Declare the true country of origin or place of provenance on the label.",
+      "needs_professional_review": true
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-010",
+      "jurisdiction": "UK",
+      "category": "nutrition",
+      "requirement": "A nutrition declaration must be provided for prepacked products, subject to the exemptions in the guidance.",
+      "severity": "high",
+      "source_id": "GOVUK-NUTRITION",
+      "source_reference": "Food labelling and packaging: nutrition, health claims and supplement labelling",
+      "source_excerpt": "You must follow nutrition labelling information rules for all prepacked products",
+      "applicability": {
+        "summary": "Prepacked food, other than exempt cases such as very small producers supplying locally.",
+        "always_applies": false,
+        "conditions": [{"fact": "nutrition_declaration_exempt", "operator": "equals", "value": false}]
+      },
+      "validation_type": "text",
+      "required_facts": ["nutrition_panel"],
+      "evidence_hint": "Nutrition table giving energy and nutrients per 100 g or 100 ml.",
+      "suggested_fix": "Add a nutrition declaration per 100 g or 100 ml covering the required nutrients.",
+      "notes": "The MVP only checks presence of a nutrition panel and the energy row. It does not validate the full nutrient set, units or rounding."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-011",
+      "jurisdiction": "UK",
+      "category": "presentation",
+      "requirement": "Mandatory information must be printed in a font with a minimum x-height of 1.2 mm, or 0.9 mm where the largest surface of the packaging is less than 80 square centimetres.",
+      "severity": "medium",
+      "source_id": "GOVUK-FIC-GUIDE",
+      "source_reference": "Food labelling: giving food information to consumers, font size",
+      "source_excerpt": "You must print all the mandatory information using a font with a minimum x-height of 1.2 millimetres. If the largest surface area of packaging is less than 80cm squared, you can use a minimum x-height of 0.9mm.",
+      "applicability": {"summary": "All prepacked food.", "always_applies": true},
+      "validation_type": "vision",
+      "required_facts": ["min_text_height_mm", "largest_surface_area_cm2"],
+      "evidence_hint": "Smallest mandatory text on the pack, compared against the 1.2 mm or 0.9 mm threshold.",
+      "suggested_fix": "Increase the font size of mandatory information to meet the x-height threshold.",
+      "needs_professional_review": true,
+      "notes": "x-height in millimetres cannot be derived from an image alone. The MVP evaluates this only when pack dimensions are supplied with the case, otherwise the finding is reported as uncertain."
+    },
+    {
+      "rule_id": "RULE-UK-FOOD-012",
+      "jurisdiction": "UK",
+      "category": "warnings",
+      "requirement": "Prescribed warning statements must appear where the product contains a trigger ingredient, for example a caffeine warning above 150 mg per litre, a phenylalanine statement for aspartame, and a laxative effect warning for polyols above 10 percent.",
+      "severity": "high",
+      "source_id": "GOVUK-WARNINGS",
+      "source_reference": "Food labelling and packaging: food and drink warnings",
+      "source_excerpt": "Caffeine over 150 mg/l: 'Not suitable for children, pregnant women and persons sensitive to caffeine'. Aspartame (E951): 'Contains a source of phenylalanine'. Polyols over 10%: 'Excessive consumption may cause a laxative effect'.",
+      "applicability": {
+        "summary": "Only where the product contains a listed trigger ingredient or additive.",
+        "always_applies": false,
+        "conditions": [{"fact": "warning_trigger", "operator": "is_present"}]
+      },
+      "validation_type": "text",
+      "required_facts": ["warnings", "ingredients_list"],
+      "evidence_hint": "Warning text on the pack matched to the trigger ingredient found in the ingredients list.",
+      "suggested_fix": "Add the exact prescribed warning statement for the trigger ingredient.",
+      "notes": "The MVP implements the caffeine, aspartame, polyols, sweetener and sulphite triggers only."
+    }
+  ]
+}

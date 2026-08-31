@@ -1,0 +1,47 @@
+{
+  "case_id": "IN-001",
+  "title": "Compliant masala peanuts pack",
+  "jurisdiction": "IN",
+  "product_category": "packaged_food",
+  "difficulty": "easy",
+  "image": "evaluation/images/IN-001.png",
+  "context": {"imported": false, "single_ingredient": false},
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 12.0,
+      "height_cm": 18.0,
+      "principal_panel_area_cm2": 86.4,
+      "largest_surface_area_cm2": 216.0,
+      "background": "#fdfaf3"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {"type": "text", "text": "SPICE HOUSE", "font_px": 34, "bold": true},
+          {"type": "text", "text": "Masala Coated Peanuts", "font_px": 26, "bold": true},
+          {"type": "symbol", "symbol": "veg_green", "height_px": 30},
+          {"type": "text", "text": "Net Wt. 200 g", "font_px": 18},
+          {"type": "text", "text": "MRP Rs. 60 (incl. of all taxes)", "font_px": 14}
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {"type": "text", "text": "Ingredients: Peanuts (72%), Gram flour, Edible vegetable oil (palm oil), Salt, Spices and condiments, Chilli powder", "font_px": 14},
+          {"type": "text", "text": "Contains: Peanuts", "font_px": 14, "bold": true},
+          {"type": "text", "text": "Nutritional Information (per 100 g): Energy 578 kcal, Protein 24.5 g, Carbohydrate 21.0 g, Total Sugars 3.1 g, Total Fat 45.2 g, Sodium 480 mg", "font_px": 13},
+          {"type": "text", "text": "Manufactured by: Spice House Foods Pvt Ltd, Plot 14, MIDC Industrial Area, Pune 411018, Maharashtra, India", "font_px": 13},
+          {"type": "symbol", "symbol": "fssai_logo", "height_px": 26},
+          {"type": "text", "text": "Lic. No. 11522998000123", "font_px": 14},
+          {"type": "text", "text": "Batch No. SH2419", "font_px": 14},
+          {"type": "text", "text": "Date of Manufacture: 04/2026   Use by: 10/2026", "font_px": 14},
+          {"type": "text", "text": "Store in a cool dry place away from direct sunlight", "font_px": 13},
+          {"type": "text", "text": "Customer Care: care@spicehousefoods.example, 1800 200 4455", "font_px": 13}
+        ]
+      }
+    ]
+  },
+  "notes": "Reference compliant case for India. Every rule in the India pack that always applies should pass."
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LabelGuard expected annotations for one case",
+  "type": "object",
+  "required": ["case_id", "expected_overall", "expected_findings"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "expected_overall": {"type": "string", "enum": ["PASS", "FAIL", "NEEDS_REVIEW"]},
+    "expected_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "expected_status"],
+        "properties": {
+          "rule_id": {"type": "string"},
+          "expected_status": {"type": "string", "enum": ["PASS", "FAIL", "NEEDS_REVIEW", "NOT_APPLICABLE"]},
+          "accept_also": {
+            "type": "array",
+            "items": {"type": "string", "enum": ["PASS", "FAIL", "NEEDS_REVIEW", "NOT_APPLICABLE"]}
+          },
+          "rationale": {"type": "string"}
+        }
+      }
+    },
+    "trap": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}
