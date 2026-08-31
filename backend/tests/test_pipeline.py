@@ -21,7 +21,7 @@ def test_pipeline_runs_end_to_end_in_mock_mode():
     compliance_report, trace = run_agent(SAMPLE_IMAGE.read_bytes(), context, case_id=None)
 
     assert compliance_report.system == "agent"
-    assert len(compliance_report.findings) == 13
+    assert len(compliance_report.findings) == 14
     steps = [e.step for e in trace.trace.events]
     assert steps == [
         "load_rule_pack",

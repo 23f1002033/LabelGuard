@@ -1,0 +1,82 @@
+{
+  "case_id": "IN-007",
+  "title": "Cross-jurisdiction: UK-compliant biscuit label evaluated against India rules",
+  "jurisdiction": "IN",
+  "product_category": "packaged_food",
+  "difficulty": "hard",
+  "image": "evaluation/images/IN-007.png",
+  "context": {
+    "imported": true,
+    "single_ingredient": false
+  },
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 12.0,
+      "height_cm": 18.0,
+      "principal_panel_area_cm2": 86.4,
+      "largest_surface_area_cm2": 216.0,
+      "background": "#fdfaf3"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "OAKFIELD BAKERS",
+            "font_px": 34,
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": "Digestive Biscuits",
+            "font_px": 26,
+            "bold": true
+          },
+          {
+            "type": "text",
+            "text": "Net weight 300 g",
+            "font_px": 18
+          }
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Ingredients: WHEAT FLOUR (42%), Sugar, Vegetable oil, WHOLE MILK POWDER, WHOLEMEAL WHEAT FLOUR, Raising agents (sodium bicarbonate, malic acid), Salt",
+            "font_px": 14
+          },
+          {
+            "type": "text",
+            "text": "Nutrition Information (per 100 g): Energy 480 kcal, Fat 20.0 g of which saturates 9.0 g, Carbohydrate 68.0 g of which sugars 22.0 g, Fibre 3.0 g, Protein 6.0 g, Salt 0.7 g",
+            "font_px": 13
+          },
+          {
+            "type": "text",
+            "text": "Made in the UK for Oakfield Bakers Ltd, 22 Mill Lane, Leeds, LS6 3AB, United Kingdom",
+            "font_px": 13
+          },
+          {
+            "type": "text",
+            "text": "Best before: 15 MAR 2027",
+            "font_px": 14
+          },
+          {
+            "type": "text",
+            "text": "Lot: OB2607A",
+            "font_px": 14
+          },
+          {
+            "type": "text",
+            "text": "Store in a cool, dry place. Best enjoyed within 3 days of opening.",
+            "font_px": 13
+          }
+        ]
+      }
+    ]
+  },
+  "notes": "Identical label content to UK-001, which is a fully UK-compliant digestive biscuit label. Evaluated here under India's rules with imported=true. Demonstrates that a label built to satisfy one jurisdiction can still fail another: no veg/non-veg symbol, no FSSAI licence, allergens are emphasised in-list per UK style rather than declared in a separate Contains statement per India style, no India-recognised date-of-manufacture-plus-expiry pairing (only a UK-style best before date), and no importer address for the Indian market."
+}

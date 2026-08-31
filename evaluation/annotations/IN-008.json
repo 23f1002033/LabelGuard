@@ -1,0 +1,72 @@
+{
+  "case_id": "IN-008",
+  "expected_overall": "NEEDS_REVIEW",
+  "expected_findings": [
+    {
+      "rule_id": "RULE-IN-FOOD-001",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-002",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-003",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-004",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-005",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-006",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-007",
+      "expected_status": "FAIL",
+      "accept_also": [
+        "NEEDS_REVIEW"
+      ],
+      "rationale": "A bare number with no unit of measure is not a valid net quantity declaration. A system that reports FAIL has correctly identified the defect; NEEDS_REVIEW is an acceptable cautious alternative, but a confident PASS is a real miss."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-008",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-009",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-010",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-011",
+      "expected_status": "PASS",
+      "rationale": "Rolled oats is a cereal containing gluten, a regulated allergen under FSSAI 5(14)(i), and a separate Contains statement naming it is present on the label."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-012",
+      "expected_status": "NEEDS_REVIEW",
+      "accept_also": [
+        "PASS"
+      ]
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-013",
+      "expected_status": "NOT_APPLICABLE"
+    }
+  ],
+  "trap": "A system that just checks whether a number is present near the front of the pack, without checking for an actual unit, will confidently PASS this when it should not.",
+  "notes": "The dedicated ambiguous-fact case: extraction may reasonably report the field as present, and the real test is whether compliance judgment recognises that presence without a unit does not satisfy the requirement. Expected overall is NEEDS_REVIEW, not FAIL, for the same reason as IN-001 and UK-001: RULE-IN-FOOD-007 accepts NEEDS_REVIEW as well as FAIL, and a system that lands on the accepted NEEDS_REVIEW path correctly produces an overall NEEDS_REVIEW under the report logic in backend/app/services/report.py, since no other rule fails on this case."
+}

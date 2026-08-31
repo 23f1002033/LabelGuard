@@ -58,11 +58,64 @@ def run_system(system: str, case: dict) -> tuple[ComplianceReport, float]:
     return result, runtime
 
 
+def print_comparison() -> int:
+    baseline_path = RESULTS_DIR / "baseline_latest.json"
+    agent_path = RESULTS_DIR / "agent_latest.json"
+    if not baseline_path.exists() or not agent_path.exists():
+        print("Need both evaluation/results/baseline_latest.json and agent_latest.json.")
+        print("Run --system baseline and --system agent first.")
+        return 1
+
+    baseline = json.loads(baseline_path.read_text())
+    agent = json.loads(agent_path.read_text())
+
+    if baseline["case_count"] != agent["case_count"]:
+        print(
+            f"WARNING: baseline ran {baseline['case_count']} cases, agent ran "
+            f"{agent['case_count']}. This comparison is not apples to apples."
+        )
+
+    rows = [
+        ("cases evaluated", baseline["case_count"], agent["case_count"]),
+        ("requirement-level F1", baseline["requirement_level_f1"]["f1"], agent["requirement_level_f1"]["f1"]),
+        ("precision", baseline["requirement_level_f1"]["precision"], agent["requirement_level_f1"]["precision"]),
+        ("recall", baseline["requirement_level_f1"]["recall"], agent["requirement_level_f1"]["recall"]),
+        ("flagged F1", baseline["flagged_f1"]["f1"], agent["flagged_f1"]["f1"]),
+        ("status accuracy", baseline["status_accuracy"], agent["status_accuracy"]),
+        ("applicability accuracy", baseline["applicability_accuracy"], agent["applicability_accuracy"]),
+        ("overall status accuracy", baseline["overall_status_accuracy"], agent["overall_status_accuracy"]),
+        ("evidence grounding rate", baseline["evidence_grounding_rate"], agent["evidence_grounding_rate"]),
+        ("avg runtime per case (s)", baseline["runtime_seconds_avg"], agent["runtime_seconds_avg"]),
+        ("total tokens", baseline["token_usage_total"], agent["token_usage_total"]),
+    ]
+
+    print("\n=== Baseline vs Agent ===")
+    print(f"baseline: {baseline['generated_at']}")
+    print(f"agent:    {agent['generated_at']}")
+    print()
+    header = f"{'metric':<26}{'baseline':>12}{'agent':>12}{'delta':>12}"
+    print(header)
+    print("-" * len(header))
+    for name, b_val, a_val in rows:
+        delta = ""
+        if isinstance(b_val, (int, float)) and isinstance(a_val, (int, float)) and name not in ("cases evaluated",):
+            delta = f"{a_val - b_val:+.3f}" if isinstance(a_val, float) else f"{a_val - b_val:+d}"
+        print(f"{name:<26}{b_val!s:>12}{a_val!s:>12}{delta:>12}")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--system", choices=["baseline", "agent"], required=True)
+    parser.add_argument("--system", choices=["baseline", "agent"])
     parser.add_argument("--cases", nargs="*", help="restrict to these case ids")
+    parser.add_argument("--compare", action="store_true", help="print baseline vs agent from the latest results")
     args = parser.parse_args()
+
+    if args.compare:
+        return print_comparison()
+    if not args.system:
+        print("Pass --system baseline|agent, or --compare to read the latest results.")
+        return 1
 
     cases = load_cases()
     if args.cases:

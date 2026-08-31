@@ -1,0 +1,61 @@
+{
+  "case_id": "IN-005",
+  "system": "agent",
+  "events": [
+    {
+      "timestamp": "2026-08-31T16:19:14.707054Z",
+      "agent": "pipeline",
+      "step": "load_rule_pack",
+      "input_reference": "",
+      "tool_used": "rules.load_rule_pack",
+      "result": "14 rules loaded",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:19:25.662526Z",
+      "agent": "extraction_agent",
+      "step": "extract_label_fields",
+      "input_reference": "",
+      "tool_used": "pytesseract + vision_model",
+      "result": "Extracted label fields: 15/22 fields present",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:19:25.662968Z",
+      "agent": "retrieval_agent",
+      "step": "select_applicable_rules",
+      "input_reference": "",
+      "tool_used": "deterministic_applicability_engine",
+      "result": "Selected applicable rules: 10/14 rules apply",
+      "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': False, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
+    },
+    {
+      "timestamp": "2026-08-31T16:19:41.199398Z",
+      "agent": "compliance_agent",
+      "step": "generate_candidate_findings",
+      "input_reference": "",
+      "tool_used": "llm",
+      "result": "Generated candidate findings: 14 findings, 1 candidate FAIL",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:19:44.715944Z",
+      "agent": "verification_agent",
+      "step": "verify_findings",
+      "input_reference": "",
+      "tool_used": "llm",
+      "result": "Verified findings: 1 FAIL findings challenged, 0 rejected",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:19:44.716799Z",
+      "agent": "pipeline",
+      "step": "generate_final_report",
+      "input_reference": "",
+      "tool_used": "",
+      "result": "FAIL",
+      "decision": "",
+      "duration_ms": 30009
+    }
+  ]
+}

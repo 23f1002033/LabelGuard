@@ -1,0 +1,20 @@
+{
+  "case_id": "UK-005",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {"rule_id": "RULE-UK-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-003", "expected_status": "FAIL", "rationale": "Peanuts appear in plain, unemphasised text in the ingredients list. The separate 'Contains: Peanuts' statement is an India-style declaration and does not satisfy the UK requirement that the allergen be emphasised inside the ingredients list itself."},
+    {"rule_id": "RULE-UK-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-006", "expected_status": "PASS", "accept_also": ["NEEDS_REVIEW"], "rationale": "A name and address are present. This MVP does not independently verify the address is genuinely within the UK, so an India address is not automatically rejected, per docs/decisions.md M3-02."},
+    {"rule_id": "RULE-UK-FOOD-007", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-009", "expected_status": "NOT_APPLICABLE", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-010", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-011", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-012", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "The presence of a clear, well-formatted 'Contains: Peanuts' statement looks like exactly the kind of allergen handling a system should reward, which can fool it into a false PASS under UK rules where the actual requirement is different (in-list emphasis, not a separate statement).",
+  "notes": "Paired with IN-007. Same underlying label design as IN-001, different jurisdiction, genuinely different correct answer on the allergen rule specifically."
+}

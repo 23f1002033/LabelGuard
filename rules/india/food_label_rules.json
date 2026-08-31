@@ -127,7 +127,7 @@
       "required_facts": ["net_quantity"],
       "evidence_hint": "Net quantity such as Net Wt. 200 g or Net Vol. 500 ml, usually on the front panel.",
       "suggested_fix": "Declare net quantity with an approved unit, plus retail sale price and consumer care contact details.",
-      "notes": "The MVP checks net quantity presence and unit plausibility only. Retail sale price and consumer care details are checked as presence, and Legal Metrology placement and font rules are out of scope."
+      "notes": "This MVP evaluates net quantity presence and unit plausibility only, since that is the only fact it extracts for this rule. Retail sale price, consumer care details, and all other Legal Metrology Act placement and font requirements are not evaluated by this system at all and should not affect this judgement in either direction."
     },
     {
       "rule_id": "RULE-IN-FOOD-008",
@@ -179,9 +179,28 @@
         "conditions": [{"fact": "imported_product", "operator": "is_true"}]
       },
       "validation_type": "text",
-      "required_facts": ["country_of_origin", "importer_name_address"],
-      "evidence_hint": "Statement such as Country of Origin: ... together with importer details.",
-      "suggested_fix": "Declare the country of origin and the name and complete address of the importer in India."
+      "required_facts": ["country_of_origin"],
+      "evidence_hint": "Statement such as Country of Origin: ... on the label.",
+      "suggested_fix": "Declare the country of origin of the food on the label."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "jurisdiction": "IN",
+      "category": "business_info",
+      "requirement": "The name and complete address of the importer in India must be declared on the label of food imported into India.",
+      "severity": "high",
+      "source_id": "FSSAI-LD-2020",
+      "source_reference": "Regulation 5(6)(b)",
+      "source_excerpt": "Where an article of food is imported into India, the package of food shall also carry the name and complete address of the importer in India.",
+      "applicability": {
+        "summary": "Only food imported into India.",
+        "always_applies": false,
+        "conditions": [{"fact": "imported_product", "operator": "is_true"}]
+      },
+      "validation_type": "text",
+      "required_facts": ["importer_name_address"],
+      "evidence_hint": "Name and Indian address of the importer, distinct from the manufacturer's overseas address.",
+      "suggested_fix": "Add the name and complete Indian address of the importer to the label."
     },
     {
       "rule_id": "RULE-IN-FOOD-011",

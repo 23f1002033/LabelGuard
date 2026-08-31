@@ -1,0 +1,69 @@
+{
+  "case_id": "IN-006",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {
+      "rule_id": "RULE-IN-FOOD-001",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-002",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-003",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-004",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-005",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-006",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-007",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-008",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-009",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-010",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-011",
+      "expected_status": "NOT_APPLICABLE",
+      "rationale": "Caffeine and taurine are not among the listed allergens in regulation 5(14); this product has no allergen from that list."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-012",
+      "expected_status": "NEEDS_REVIEW",
+      "accept_also": [
+        "PASS"
+      ]
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-013",
+      "expected_status": "FAIL",
+      "rationale": "Caffeine is an added ingredient but no CONTAINS CAFFEINE statement appears on the label."
+    }
+  ],
+  "trap": "A system that only checks the allergen list may treat this ingredient list as fully compliant, missing that caffeine triggers a separate Schedule II warning requirement distinct from allergens.",
+  "notes": "Tests the warning-trigger detection path, which is structurally different from the allergen path even though both key off ingredient keywords."
+}

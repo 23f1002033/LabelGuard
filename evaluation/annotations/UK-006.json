@@ -1,0 +1,20 @@
+{
+  "case_id": "UK-006",
+  "expected_overall": "NEEDS_REVIEW",
+  "expected_findings": [
+    {"rule_id": "RULE-UK-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-003", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-006", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-007", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-009", "expected_status": "NOT_APPLICABLE", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-010", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-011", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-012", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "A system whose OCR-dependent evidence checking breaks under blur may hallucinate missing fields that are actually present and legible, producing false FAILs purely from image quality rather than a real label defect. Tesseract's raw OCR output on this image is heavily garbled even though the label is fully readable, which specifically stresses any evidence-grounding logic that leans on exact OCR string matches rather than the model's own reading of the image.",
+  "notes": "The dedicated hard-to-read / visually complex case, and simultaneously the fully-compliant-but-degraded case: every requirement is genuinely satisfied, so any FAIL here is a pure robustness failure, not a real compliance finding. Verified against a live run before finalising these expectations: extraction succeeded on every field with confidence 0.9 or higher despite garbled OCR text, and the full agent pipeline correctly returned PASS or the standard NOT_APPLICABLE/NEEDS_REVIEW on every rule."
+}

@@ -1,0 +1,69 @@
+{
+  "case_id": "IN-005",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {
+      "rule_id": "RULE-IN-FOOD-001",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-002",
+      "expected_status": "FAIL",
+      "rationale": "No ingredients list, titled or otherwise, appears anywhere on the pack."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-003",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-004",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-005",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-006",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-007",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-008",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-009",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-010",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-011",
+      "expected_status": "NOT_APPLICABLE",
+      "rationale": "With no ingredients list at all, no listed allergen keyword can be detected, so the allergen declaration rule does not trigger. This is itself a notable limitation: the missing-ingredients violation should be caught by RULE-IN-FOOD-002, not miscounted as an allergen problem."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-012",
+      "expected_status": "NEEDS_REVIEW",
+      "accept_also": [
+        "PASS"
+      ]
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-013",
+      "expected_status": "NOT_APPLICABLE"
+    }
+  ],
+  "trap": "A system that only checks for allergen keywords inside the ingredients text might treat an entirely absent ingredients list as trivially allergen-free, missing that this is itself a critical violation.",
+  "notes": "Tests recall on a total absence of a required section, distinct from a partial/incomplete one."
+}

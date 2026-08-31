@@ -178,10 +178,13 @@ model training, live regulation crawling at request time.
    both the text and vision endpoints. `LABELGUARD_MODE=mock` still exists as a zero
    token, offline fallback for the test suite (`backend/app/agents/baseline_agent.py`),
    not for measured metrics.
-2. OCR quality on synthetic labels is good, which can flatter the extraction stage
-   relative to real photographs. The renderer supports rotation, blur and noise
-   through the `pack` block of the label spec, but none of the 7 Milestone 2 cases use
-   them yet; harder variants are planned for the Milestone 4 case set expansion.
+2. Resolved in Milestone 4: OCR quality on synthetic labels is generally good, which
+   can flatter the extraction stage relative to real photographs. UK-006 now applies
+   rotation, blur and noise through the `pack` block of the label spec; tesseract's raw
+   OCR output on it is badly garbled but the vision-based extraction agent still read
+   every field correctly at confidence 0.9 or higher, which is itself a useful, real
+   finding about where this system's robustness actually comes from (the vision call,
+   not the OCR text it is given alongside).
 3. The baseline is already observed to be non-deterministic at temperature 0: the same
    case, same model, back-to-back runs, produced a different FAIL/PASS verdict on one
    requirement. See IMPROVEMENT_CHANGELOG.md "Baseline observation 2". This affects how
@@ -196,3 +199,11 @@ model training, live regulation crawling at request time.
 5. Synthetic labels are not real product photographs, so absolute numbers are not a
    claim about field performance. The comparison between baseline and agent is fair
    because both see identical inputs.
+6. The Gemini API key hit its account's monthly spending cap during Milestone 4, mid
+   final-confirmation-run. This blocked re-verifying the last rule pack fix
+   (RULE-IN-FOOD-007's notes, see IMPROVEMENT_CHANGELOG.md "M4 verification blocked"
+   and docs/decisions.md M4-04) at full 15-case scale. The fix was kept on the strength
+   of its reasoning and its match to an already-validated pattern, not reverted or
+   hidden, and the reported Milestone 4 numbers are honestly labelled as coming from
+   the run before that fix. Re-running the full comparison once the cap resets or is
+   raised is the first item for Milestone 5.

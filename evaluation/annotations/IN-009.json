@@ -1,0 +1,68 @@
+{
+  "case_id": "IN-009",
+  "expected_overall": "NEEDS_REVIEW",
+  "expected_findings": [
+    {
+      "rule_id": "RULE-IN-FOOD-001",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-002",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-003",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-004",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-005",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-006",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-007",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-008",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-009",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-010",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-011",
+      "expected_status": "NOT_APPLICABLE",
+      "rationale": "Coconut, jaggery and sea salt are not regulated allergens under FSSAI regulation 5(14). Coconut is botanically a drupe, not a tree nut, and is not on the allergen list this rule pack implements."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-012",
+      "expected_status": "NEEDS_REVIEW",
+      "accept_also": [
+        "PASS"
+      ]
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-013",
+      "expected_status": "NOT_APPLICABLE"
+    }
+  ],
+  "trap": "Coconut sounds like a nut and coconut allergy exists colloquially, which can lead a system reasoning from general world knowledge, rather than the specific regulated allergen list, to wrongly flag a missing Contains statement here. Any FAIL or NEEDS_REVIEW on RULE-IN-FOOD-011 is a false positive.",
+  "notes": "This is the dedicated challenging false-positive case for the India pack: correct behaviour requires knowing the specific regulated list, not general allergen intuition."
+}
