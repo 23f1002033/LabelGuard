@@ -21,7 +21,7 @@ def test_baseline_runs_in_mock_mode_without_network():
     compliance_report, trace = run_baseline(SAMPLE_IMAGE.read_bytes(), context, case_id=None)
 
     assert compliance_report.system == "baseline"
-    assert len(compliance_report.findings) == 13
+    assert len(compliance_report.findings) == 14
     assert all(f.status == Status.needs_review for f in compliance_report.findings)
     assert compliance_report.token_usage["total_tokens"] == 0
     assert any(e.step == "single_llm_call" for e in trace.trace.events)

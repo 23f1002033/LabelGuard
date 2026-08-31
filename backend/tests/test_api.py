@@ -43,7 +43,7 @@ def test_analyze_agent_happy_path():
     assert resp.status_code == 200
     body = resp.json()
     assert body["report"]["system"] == "agent"
-    assert len(body["report"]["findings"]) == 13
+    assert len(body["report"]["findings"]) == 14
     assert len(body["trace"]) == 6
 
 

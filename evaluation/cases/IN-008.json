@@ -1,0 +1,47 @@
+{
+  "case_id": "IN-008",
+  "title": "Fruit bar with net quantity printed as a bare number, no unit",
+  "jurisdiction": "IN",
+  "product_category": "packaged_food",
+  "difficulty": "hard",
+  "image": "evaluation/images/IN-008.png",
+  "context": {"imported": false, "single_ingredient": false},
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 8.0,
+      "height_cm": 15.0,
+      "principal_panel_area_cm2": 48.0,
+      "largest_surface_area_cm2": 120.0,
+      "background": "#fef6ec"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {"type": "text", "text": "SUNVALLEY", "font_px": 30, "bold": true},
+          {"type": "text", "text": "Mixed Fruit Energy Bar", "font_px": 20, "bold": true},
+          {"type": "symbol", "symbol": "veg_green", "height_px": 24},
+          {"type": "text", "text": "250", "font_px": 26, "bold": true},
+          {"type": "text", "text": "MRP Rs. 40 (incl. of all taxes)", "font_px": 14}
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {"type": "text", "text": "Ingredients: Dates, Dried figs, Dried apricots, Rolled oats, Honey", "font_px": 13},
+          {"type": "text", "text": "Contains: Oats (Gluten)", "font_px": 13, "bold": true},
+          {"type": "text", "text": "Nutritional Information (per 100 g): Energy 320 kcal, Protein 4.5 g, Carbohydrate 68.0 g, Total Sugars 52.0 g, Total Fat 2.5 g, Sodium 15 mg", "font_px": 13},
+          {"type": "text", "text": "Manufactured by: Sunvalley Foods Pvt Ltd, 18 Orchard Estate, Solan 173212, Himachal Pradesh, India", "font_px": 13},
+          {"type": "symbol", "symbol": "fssai_logo", "height_px": 24},
+          {"type": "text", "text": "Lic. No. 12518009003344", "font_px": 14},
+          {"type": "text", "text": "Batch No. SV1187", "font_px": 14},
+          {"type": "text", "text": "Date of Manufacture: 06/2026   Use by: 12/2026", "font_px": 14},
+          {"type": "text", "text": "Store in a cool dry place", "font_px": 13},
+          {"type": "text", "text": "Customer Care: care@sunvalleyfoods.example, 1800 233 5566", "font_px": 13}
+        ]
+      }
+    ]
+  },
+  "notes": "The front panel shows the number 250 prominently but no unit (g, ml, kg) appears anywhere near it or anywhere else on the pack. Deliberately ambiguous: it looks like a quantity declaration but is not a valid one without a unit. Rolled oats is a cereal containing gluten under FSSAI regulation 5(14)(i), a regulated allergen, so a Contains statement is required and is present here, keeping the case an isolated single violation of the net quantity rule only."
+}

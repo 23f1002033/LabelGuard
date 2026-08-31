@@ -1,0 +1,61 @@
+{
+  "case_id": "IN-009",
+  "system": "agent",
+  "events": [
+    {
+      "timestamp": "2026-08-31T16:21:41.896024Z",
+      "agent": "pipeline",
+      "step": "load_rule_pack",
+      "input_reference": "",
+      "tool_used": "rules.load_rule_pack",
+      "result": "14 rules loaded",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:21:55.808908Z",
+      "agent": "extraction_agent",
+      "step": "extract_label_fields",
+      "input_reference": "",
+      "tool_used": "pytesseract + vision_model",
+      "result": "Extracted label fields: 15/22 fields present",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:21:55.809402Z",
+      "agent": "retrieval_agent",
+      "step": "select_applicable_rules",
+      "input_reference": "",
+      "tool_used": "deterministic_applicability_engine",
+      "result": "Selected applicable rules: 10/14 rules apply",
+      "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': False, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
+    },
+    {
+      "timestamp": "2026-08-31T16:22:11.638467Z",
+      "agent": "compliance_agent",
+      "step": "generate_candidate_findings",
+      "input_reference": "",
+      "tool_used": "llm",
+      "result": "Generated candidate findings: 14 findings, 1 candidate FAIL",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:22:17.467042Z",
+      "agent": "verification_agent",
+      "step": "verify_findings",
+      "input_reference": "",
+      "tool_used": "llm",
+      "result": "Verified findings: 1 FAIL findings challenged, 1 rejected",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T16:22:17.468040Z",
+      "agent": "pipeline",
+      "step": "generate_final_report",
+      "input_reference": "",
+      "tool_used": "",
+      "result": "NEEDS_REVIEW",
+      "decision": "",
+      "duration_ms": 35569
+    }
+  ]
+}

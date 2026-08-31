@@ -1,0 +1,77 @@
+{
+  "case_id": "IN-007",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {
+      "rule_id": "RULE-IN-FOOD-001",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-002",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-003",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-004",
+      "expected_status": "FAIL",
+      "rationale": "No vegetarian or non-vegetarian symbol appears anywhere on this UK-formatted label."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-005",
+      "expected_status": "PASS",
+      "accept_also": [
+        "NEEDS_REVIEW"
+      ],
+      "rationale": "A name and address are present ('Made in the UK for Oakfield Bakers Ltd, 22 Mill Lane, Leeds...'); whether 'Made ... for ...' counts as one of the named qualifying phrases is a genuine judgement call."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-006",
+      "expected_status": "FAIL",
+      "rationale": "No FSSAI logo or licence number appears anywhere."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-007",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-008",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-009",
+      "expected_status": "FAIL",
+      "rationale": "Only a UK-style best before date is present. India requires both a date of manufacture or packaging and an expiry or use by date; best before alone does not satisfy this."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-010",
+      "expected_status": "FAIL",
+      "rationale": "The product is marked imported, but no importer name and address in India is declared, only the UK manufacturer address."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "expected_status": "FAIL",
+      "rationale": "No name and address of an importer in India appears anywhere on the label, only the overseas manufacturer's address."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-011",
+      "expected_status": "FAIL",
+      "rationale": "Wheat and milk are present as allergens, but the label uses UK-style in-list capitalisation rather than a separate Contains statement, which India's rule requires."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-012",
+      "expected_status": "NEEDS_REVIEW",
+      "accept_also": [
+        "PASS"
+      ]
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-013",
+      "expected_status": "NOT_APPLICABLE"
+    }
+  ],
+  "trap": "A system that is not genuinely jurisdiction-aware might reuse a judgement it already made for the identical label under UK-001 and default everything to PASS, or might be confused by the in-list allergen emphasis and treat it as satisfying India's separate-statement requirement.",
+  "notes": "Paired with UK-005, which evaluates the mirror-image case. Same underlying label design as UK-001, different jurisdiction, genuinely different correct answer on several rules. This is the dedicated cross-jurisdiction difference case."
+}

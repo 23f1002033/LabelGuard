@@ -11,11 +11,24 @@ asserts that a product is legally compliant.
 
 ## Status
 
-Milestone 3 of 5 complete: the four-agent pipeline (extraction, retrieval, compliance,
-verification), a FastAPI backend, and a React frontend, wired together end to end from
-upload to report. Expanding the case set to 10-15 with harder trap cases, and the
-baseline-vs-agent comparison writeup, land in Milestone 4. Commands marked
-"(Milestone N)" do not exist yet.
+Milestone 4 of 5 complete: the evaluation set is now 15 cases, the full baseline vs
+agent comparison has been run, the largest failure mode was identified and fixed with
+a real before/after, and 15 rules now exist in the India pack (one was split into two
+correctly-scoped rules along the way). One caveat: the Gemini API key hit its account's
+monthly spending cap mid-way through a final confirmation run; see "Known limitation"
+below. Commands marked "(Milestone N)" do not exist yet.
+
+### Known limitation: last fix not yet re-confirmed at full scale
+
+A real bug (rule notes contradicting what facts the compliance agent actually receives,
+see `IMPROVEMENT_CHANGELOG.md` "M4 largest failure mode + Iteration 1") was found and
+fixed, but the API quota ran out before a fresh 15-case run could confirm its effect on
+the aggregate numbers. The fix was kept, not reverted, because it follows the exact
+pattern already validated at scale in Milestone 3 and is independently checkable
+against the rule pack. The numbers below are the last complete run *before* that fix,
+so they are an honest floor, not an inflated claim. Once the developer resets or raises
+the Gemini spend cap, re-running `evaluation/evaluate.py --system agent` on all 15
+cases is the first thing to do.
 
 ## Scope
 
@@ -23,12 +36,16 @@ baseline-vs-agent comparison writeup, land in Milestone 4. Commands marked
 - Markets: India (FSSAI Labelling and Display Regulations, 2020) and Great Britain
   (Food Information Regulations 2014 and assimilated Regulation (EU) No 1169/2011,
   as stated in current GOV.UK and Food Standards Agency guidance)
-- 13 India requirements and 12 UK requirements, listed with sources in
+- 14 India requirements and 12 UK requirements, listed with sources in
   `rules/india/food_label_rules.json` and `rules/uk/food_label_rules.json`
-- 7 synthetic evaluation cases so far (4 India, 3 UK), rendered deterministically from
-  `evaluation/cases/*.json`; the full 10-15 case set with the harder trap cases
-  (ambiguous label, low legibility, explicit cross-jurisdiction pair) lands in
-  Milestone 4
+- 15 synthetic evaluation cases (9 India, 6 UK), rendered deterministically from
+  `evaluation/cases/*.json`, covering: a compliant reference per jurisdiction, isolated
+  single violations across every rule category, a multi-violation case, two
+  warning-trigger cases, an explicit matched cross-jurisdiction pair (identical label
+  content, opposite jurisdiction, genuinely different correct answer), a genuinely
+  ambiguous fact case, a false-positive trap grounded in an actual regulatory nuance
+  (coconut is not a regulated tree nut), and a fully compliant but rotated/blurred/noisy
+  robustness case
 
 This is a bounded subset of each country's labelling law, not full coverage. See
 `docs/architecture.md` section 3 for what is deliberately excluded.
@@ -74,7 +91,7 @@ exist, and checks that no data file contains non-ASCII characters.
 Expected output:
 
 ```
-OK: 2 rule packs, 7 cases, 7 annotations
+OK: 2 rule packs, 15 cases, 15 annotations
 ```
 
 ```
@@ -96,16 +113,16 @@ to `evaluation/results/baseline_<timestamp>.json` and `baseline_latest.json`. Pa
 `--cases IN-001 IN-002` to restrict to specific cases. Requires images to already be
 rendered and, in live mode, requires `LLM_API_KEY` to be set in `.env`.
 
-Actual output from the 7-case set on 2026-08-31, model gemini-2.5-flash:
+Actual output from the full 15-case set on 2026-08-31, model gemini-2.5-flash:
 
 ```
-requirement-level detection F1: precision=0.75 recall=0.857 f1=0.8
-flagged F1 (FAIL+NEEDS_REVIEW): precision=0.643 recall=0.9 f1=0.75
-status accuracy: 0.875
-applicability accuracy: 0.857
-overall status accuracy: 0.714
-evidence grounding rate: 0.352
-avg runtime per case: 23.25s
+requirement-level detection F1: precision=0.842 recall=0.941 f1=0.889
+flagged F1 (FAIL+NEEDS_REVIEW): precision=0.765 recall=0.963 f1=0.852
+status accuracy: 0.899
+applicability accuracy: 0.923
+overall status accuracy: 0.867
+evidence grounding rate: 0.328
+avg runtime per case: 22.22s
 ```
 
 ```
@@ -113,36 +130,48 @@ avg runtime per case: 23.25s
 ```
 
 Runs the full agent pipeline (extraction, retrieval, compliance, verification) over
-the same 7 cases and the same annotations as the baseline, so the comparison is
-apples to apples.
+the same cases and the same annotations as the baseline, so the comparison is apples
+to apples.
 
-Actual output from the 7-case set on 2026-08-31, model gemini-2.5-flash, confirmed
-stable across two consecutive live runs:
+Actual output from the full 15-case set on 2026-08-31, model gemini-2.5-flash:
 
 ```
-requirement-level detection F1: precision=1.0 recall=1.0 f1=1.0
-flagged F1 (FAIL+NEEDS_REVIEW): precision=0.867 recall=1.0 f1=0.929
-status accuracy: 0.966
+requirement-level detection F1: precision=0.941 recall=0.941 f1=0.941
+flagged F1 (FAIL+NEEDS_REVIEW): precision=0.816 recall=0.969 f1=0.886
+status accuracy: 0.944
 applicability accuracy: 1.0
 overall status accuracy: 1.0
-evidence grounding rate: 0.478
-avg runtime per case: 32.4s
+evidence grounding rate: 0.524
+avg runtime per case: 34.51s
 ```
 
-Baseline vs agent on the same 7 cases: F1 0.8 to 1.0, applicability accuracy 0.857 to
-1.0, overall-status accuracy 0.714 to 1.0, evidence grounding 0.352 to 0.48, at roughly
-1.4x the runtime and 1.8x the tokens of the baseline. See `IMPROVEMENT_CHANGELOG.md`
-for the full story: two baseline failure modes found, three real bugs found and fixed
-while building the agent, and what each fix actually changed.
+```
+./.venv/bin/python evaluation/evaluate.py --compare
+```
+
+Reads `evaluation/results/baseline_latest.json` and `agent_latest.json` and prints a
+metric-by-metric delta table. Warns instead of silently comparing if the two runs
+covered different case counts.
+
+Baseline vs agent on the same 15 cases: F1 0.889 to 0.941, applicability accuracy
+0.923 to 1.0, overall-status accuracy 0.867 to 1.0, evidence grounding 0.328 to 0.524,
+at roughly 1.5x the runtime and 1.7x the tokens of the baseline. These numbers predate
+one further rule-pack fix (see "Known limitation" above); the fix is kept and reasoned
+through in `IMPROVEMENT_CHANGELOG.md`, but not yet re-confirmed at this scale because
+the API quota ran out immediately afterward. See `IMPROVEMENT_CHANGELOG.md` for the
+full story: two baseline failure modes found in Milestone 2, three real bugs found and
+fixed while building the agent in Milestone 3, and the largest failure mode plus its
+fix found in Milestone 4.
 
 ```
 ./.venv/bin/python -m pytest
 ```
 
-Runs the backend test suite (59 tests as of Milestone 3): rule pack integrity, report
+Runs the backend test suite (62 tests as of Milestone 4): rule pack integrity, report
 and scoring logic, every agent's plumbing in mock mode (extraction, retrieval,
-compliance, verification, the full pipeline), the FastAPI endpoints, and label
-renderer determinism. No API key needed, all tests run offline.
+compliance, verification, the full pipeline), the FastAPI endpoints, the evaluation
+comparison command, and label renderer determinism. No API key needed, all tests run
+offline.
 
 ```
 LABELGUARD_MODE=mock ./.venv/bin/python -m uvicorn app.main:app --app-dir backend --port 8000
@@ -163,8 +192,7 @@ baseline, and get the same report structure the evaluation harness scores.
 Arriving later:
 
 ```
-./.venv/bin/python evaluation/evaluate.py --compare    (Milestone 4)
-./.venv/bin/python scripts/demo.py                      (Milestone 5)
+./.venv/bin/python scripts/demo.py    (Milestone 5)
 ```
 
 ## Layout

@@ -2,19 +2,66 @@
   "case_id": "IN-001",
   "expected_overall": "NEEDS_REVIEW",
   "expected_findings": [
-    {"rule_id": "RULE-IN-FOOD-001", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-002", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-003", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-004", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-005", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-006", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-007", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-008", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-009", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-010", "expected_status": "NOT_APPLICABLE"},
-    {"rule_id": "RULE-IN-FOOD-011", "expected_status": "PASS"},
-    {"rule_id": "RULE-IN-FOOD-012", "expected_status": "PASS", "accept_also": ["NEEDS_REVIEW"], "rationale": "Smallest mandatory text is 13 px at 40 px per cm, which is 3.25 mm, above the 2 mm band for this panel area."},
-    {"rule_id": "RULE-IN-FOOD-013", "expected_status": "NOT_APPLICABLE"}
+    {
+      "rule_id": "RULE-IN-FOOD-001",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-002",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-003",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-004",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-005",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-006",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-007",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-008",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-009",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-010",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-014",
+      "expected_status": "NOT_APPLICABLE"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-011",
+      "expected_status": "PASS"
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-012",
+      "expected_status": "PASS",
+      "accept_also": [
+        "NEEDS_REVIEW"
+      ],
+      "rationale": "Smallest mandatory text is 13 px at 40 px per cm, which is 3.25 mm, above the 2 mm band for this panel area."
+    },
+    {
+      "rule_id": "RULE-IN-FOOD-013",
+      "expected_status": "NOT_APPLICABLE"
+    }
   ],
   "trap": "A naive system often flags allergen or date findings on compliant labels. Any FAIL here is a false positive.",
   "notes": "Reference case used to measure false positive behaviour. Expected overall is NEEDS_REVIEW, not PASS, because RULE-IN-FOOD-012 (character height) is expected NEEDS_REVIEW and any NEEDS_REVIEW finding makes the overall status NEEDS_REVIEW under the report logic in backend/app/services/report.py."

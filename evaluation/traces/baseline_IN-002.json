@@ -3,16 +3,16 @@
   "system": "baseline",
   "events": [
     {
-      "timestamp": "2026-08-31T14:00:26.210981Z",
+      "timestamp": "2026-08-31T16:28:02.751376Z",
       "agent": "baseline",
       "step": "load_rule_pack",
       "input_reference": "",
       "tool_used": "rules.load_rule_pack",
-      "result": "13 rules loaded",
+      "result": "14 rules loaded",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T14:00:26.477478Z",
+      "timestamp": "2026-08-31T16:28:03.011835Z",
       "agent": "baseline",
       "step": "ocr_extract",
       "input_reference": "",
@@ -21,23 +21,23 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T14:00:50.648345Z",
+      "timestamp": "2026-08-31T16:28:27.129725Z",
       "agent": "baseline",
       "step": "single_llm_call",
       "input_reference": "",
       "tool_used": "llm:IN",
-      "result": "13 findings returned",
+      "result": "14 findings returned",
       "decision": "single prompt produced full report, no separate verification"
     },
     {
-      "timestamp": "2026-08-31T14:00:50.651106Z",
+      "timestamp": "2026-08-31T16:28:27.131036Z",
       "agent": "baseline",
       "step": "report_generated",
       "input_reference": "",
       "tool_used": "",
       "result": "FAIL",
       "decision": "",
-      "duration_ms": 24439
+      "duration_ms": 24379
     }
   ]
 }

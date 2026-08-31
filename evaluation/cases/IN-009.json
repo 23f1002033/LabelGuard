@@ -1,0 +1,46 @@
+{
+  "case_id": "IN-009",
+  "title": "Coconut chips: nut-sounding ingredient that is not a regulated allergen",
+  "jurisdiction": "IN",
+  "product_category": "packaged_food",
+  "difficulty": "hard",
+  "image": "evaluation/images/IN-009.png",
+  "context": {"imported": false, "single_ingredient": false},
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 9.0,
+      "height_cm": 16.0,
+      "principal_panel_area_cm2": 64.0,
+      "largest_surface_area_cm2": 144.0,
+      "background": "#f4f9f0"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {"type": "text", "text": "ISLAND HARVEST", "font_px": 30, "bold": true},
+          {"type": "text", "text": "Toasted Coconut Chips", "font_px": 22, "bold": true},
+          {"type": "symbol", "symbol": "veg_green", "height_px": 26},
+          {"type": "text", "text": "Net Wt. 100 g", "font_px": 18},
+          {"type": "text", "text": "MRP Rs. 75 (incl. of all taxes)", "font_px": 14}
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {"type": "text", "text": "Ingredients: Coconut (85%), Jaggery, Sea salt", "font_px": 14},
+          {"type": "text", "text": "Nutritional Information (per 100 g): Energy 660 kcal, Protein 3.3 g, Carbohydrate 24.0 g, Total Sugars 18.0 g, Total Fat 62.0 g, Sodium 90 mg", "font_px": 13},
+          {"type": "text", "text": "Manufactured by: Island Harvest Foods Pvt Ltd, 3 Coastal Road, Kochi 682001, Kerala, India", "font_px": 13},
+          {"type": "symbol", "symbol": "fssai_logo", "height_px": 26},
+          {"type": "text", "text": "Lic. No. 13119004005678", "font_px": 14},
+          {"type": "text", "text": "Batch No. IH0630", "font_px": 14},
+          {"type": "text", "text": "Date of Manufacture: 05/2026   Use by: 11/2026", "font_px": 14},
+          {"type": "text", "text": "Store in an airtight container in a cool dry place", "font_px": 13},
+          {"type": "text", "text": "Customer Care: care@islandharvest.example, 1800 660 7788", "font_px": 13}
+        ]
+      }
+    ]
+  },
+  "notes": "Coconut is not classified as a tree nut allergen under either the FSSAI or the UK/EU regulated allergen lists (it is a drupe, not a botanical nut), so no Contains statement is required or present. This is a deliberate false-positive trap for systems that conflate the word coconut or the general idea of a nut-like product with the regulated tree nut allergen category."
+}

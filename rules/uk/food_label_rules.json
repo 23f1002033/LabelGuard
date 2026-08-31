@@ -174,7 +174,8 @@
       "required_facts": ["storage_instructions", "usage_instructions"],
       "evidence_hint": "Text such as Keep refrigerated, Store in a cool dry place, or cooking directions.",
       "suggested_fix": "Add the storage conditions and preparation instructions the product needs.",
-      "needs_professional_review": true
+      "needs_professional_review": true,
+      "notes": "The MVP checks that storage conditions are present when this rule applies. It does not require separate usage or cooking instructions unless the product plainly cannot be used safely or as intended without them, such as raw meat needing a cooking temperature or a concentrate needing a dilution ratio. For a typical ready-to-consume or ready-to-drink product, storage conditions alone are enough and the absence of separate usage instructions is not itself a violation."
     },
     {
       "rule_id": "RULE-UK-FOOD-008",

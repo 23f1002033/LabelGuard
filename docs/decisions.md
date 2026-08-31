@@ -164,3 +164,64 @@ heuristics (allergen keyword lists, date-marking exemption keywords, warning tri
 keywords) are only as good as the keyword lists in the file, and will not catch a
 phrasing they do not recognise; this is an explicit, inspectable limitation rather than
 a silent one.
+
+## M4-01 RULE-IN-FOOD-010 split into origin and importer-address rules
+
+`RULE-IN-FOOD-010` originally bundled two distinct FSSAI provisions under one rule id:
+country of origin (regulation 5(12)(a)) and importer name/address (regulation 5(6)(b)).
+Its `requirement` text and `source_excerpt` only ever described the origin duty, but
+`required_facts` also listed `importer_name_address`. The compliance agent, correctly
+following the M3-02 pattern of judging against the stated requirement text, reasonably
+ignored the importer fact it was never asked about, so an imported label missing an
+Indian importer address could pass this rule on origin declaration alone. Verified live
+on IN-007 (a UK-formatted label evaluated under India rules with no Indian importer
+address) before fixing: extraction correctly found the importer address absent, but the
+rule passed anyway. Split into `RULE-IN-FOOD-010` (origin only, required_facts =
+[country_of_origin]) and new `RULE-IN-FOOD-014` (importer address only, required_facts
+= [importer_name_address], citing FSSAI 5(6)(b), quote checked against the original
+extracted regulation text from `docs/architecture.md`'s Milestone 1 source). All 9
+India annotations updated to add the corresponding RULE-IN-FOOD-014 expectation.
+
+## M4-02 Rule notes must never claim something is checked when required_facts doesn't supply it
+
+`RULE-IN-FOOD-007`'s notes field said "retail sale price and consumer care details are
+checked as presence," but `required_facts` only ever supplied `net_quantity`. This is
+the same failure class as M3-02 (compliance agent hedges when asked to judge something
+it has no evidence for) but caused by the notes field itself lying about what facts the
+system actually has, rather than the notes field being absent. It recurred on 5 of 15
+cases, the single largest failure pattern found in the Milestone 4 case set, because
+every case that reaches this always-applicable rule triggers it. Rewrote the notes to
+state plainly that retail sale price and consumer care are not evaluated "in either
+direction," and audited every other rule's notes against its required_facts for the
+same contradiction; none found. General principle going forward: a rule's notes field
+must only describe what its own `required_facts` actually let the compliance agent see,
+never what the rule pack author wishes it also covered.
+
+## M4-03 Cross-jurisdiction cases reuse existing label content rather than new renders
+
+IN-007 and UK-005 reuse UK-001's and IN-001's exact `label_spec` respectively, just
+under the other jurisdiction with a different `context.imported` value. This was
+deliberate: the pedagogical point is that identical label content gets a genuinely
+different correct answer depending on jurisdiction, which is only a clean demonstration
+if the content is literally identical, not merely similar. The alternative (designing
+two new, thematically similar but not identical labels) would have left open the
+question of whether any observed difference came from the jurisdiction or from
+incidental differences in the label content.
+
+## M4-04 Gemini monthly spend cap blocked final confirmation, fixes kept anyway
+
+The API key hit `RESOURCE_EXHAUSTED` (monthly spending cap, confirmed with a second
+minimal call immediately after, same error) partway through a final confirmation run,
+after the RULE-IN-FOOD-007 notes fix (M4-02) had been made but before it could be
+re-verified at full 15-case scale, and after a second, smaller notes fix to
+RULE-UK-FOOD-007 had been made and verified only on the single case that surfaced it
+(UK-004). Rather than revert the fixes to match only what could be re-confirmed, or
+fabricate a plausible-looking final run, both fixes were kept because: the reasoning
+for each is sound and independently checkable against the rule pack and the FSSAI/UK
+source text; RULE-IN-FOOD-007's fix follows the exact pattern already validated at
+scale for six other rules in Milestone 3 (M3-02); and RULE-UK-FOOD-007's fix was
+live-verified on the case that found it, just not re-confirmed at full-set scale. The
+numbers reported for Milestone 4 (see IMPROVEMENT_CHANGELOG.md) are therefore the last
+complete run before the RULE-IN-FOOD-007 fix, honestly labelled as such, and are if
+anything an underestimate of the agent's current performance. A full re-run is the
+first item for Milestone 5 once the developer resets or raises the spend cap.

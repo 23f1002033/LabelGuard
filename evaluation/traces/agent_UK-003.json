@@ -3,7 +3,7 @@
   "system": "agent",
   "events": [
     {
-      "timestamp": "2026-08-31T14:59:54.813021Z",
+      "timestamp": "2026-08-31T16:23:23.758800Z",
       "agent": "pipeline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,7 +12,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T15:00:08.022413Z",
+      "timestamp": "2026-08-31T16:23:36.704022Z",
       "agent": "extraction_agent",
       "step": "extract_label_fields",
       "input_reference": "",
@@ -21,7 +21,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T15:00:08.022813Z",
+      "timestamp": "2026-08-31T16:23:36.704646Z",
       "agent": "retrieval_agent",
       "step": "select_applicable_rules",
       "input_reference": "",
@@ -30,7 +30,7 @@
       "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': True, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
     },
     {
-      "timestamp": "2026-08-31T15:00:21.631875Z",
+      "timestamp": "2026-08-31T16:23:53.831539Z",
       "agent": "compliance_agent",
       "step": "generate_candidate_findings",
       "input_reference": "",
@@ -39,7 +39,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T15:00:26.087392Z",
+      "timestamp": "2026-08-31T16:23:57.513899Z",
       "agent": "verification_agent",
       "step": "verify_findings",
       "input_reference": "",
@@ -48,14 +48,14 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T15:00:26.088282Z",
+      "timestamp": "2026-08-31T16:23:57.514726Z",
       "agent": "pipeline",
       "step": "generate_final_report",
       "input_reference": "",
       "tool_used": "",
       "result": "FAIL",
       "decision": "",
-      "duration_ms": 31275
+      "duration_ms": 33755
     }
   ]
 }
