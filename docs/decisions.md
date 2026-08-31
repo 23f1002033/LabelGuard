@@ -108,3 +108,59 @@ single-prompt baseline would not think to ask for or use pack dimensions either,
 leaving them out keeps the baseline a fair "reasonable naive implementation" per
 section 8, rather than quietly giving it a capability a naive implementation would not
 have. The Milestone 3 agent is free to use them in its compliance step.
+
+## M3-01 Do not cap extraction confidence for absent facts
+
+`backend/app/agents/extraction_agent.py` originally clamped confidence to at most 0.3
+whenever a field's `present` flag was false, on the reasoning that the model should
+not sound too sure about something it did not find. In practice this destroyed exactly
+the signal the evidence-first design in section 7 of the brief depends on: a model that
+is genuinely certain a required declaration is absent (confidence 1.0 in the raw API
+response) got relabelled as barely-confident, which then made the compliance agent
+treat a clear violation as merely uncertain. Removed the clamp; confidence now means
+"how sure the extractor is that this field's present/value reading is correct," in
+both directions, and a confident absence is allowed to read as confident. See
+IMPROVEMENT_CHANGELOG.md "Agent v1 bug 1".
+
+## M3-02 Compliance judgment scope follows rule.notes, not the full legal text
+
+The compliance agent is given the full `requirement` legal text plus only the
+`required_facts` an MVP actually extracts. Several rules' legal text names details
+(colour contrast, physical grouping of two dates, true manufacturing weight order)
+that are not separately extracted, and the model was correctly declining to confidently
+PASS things it had no evidence for. The tempting fix, telling the model to PASS anyway
+when facts are missing, was rejected: it would make the system assert things it cannot
+actually verify, directly contradicting section 7's "never allow unsupported claims."
+The correct fix was already half-built: the rule pack's `notes` field exists
+specifically to document MVP scope narrowing (see M1's rule schema), it just was not
+being read by the compliance agent. Wired `rule.notes` into the compliance prompt and
+added notes to the affected rules (RULE-IN-FOOD-002/006/009, RULE-UK-FOOD-002/005/006)
+stating exactly what this system checks for each. This keeps every PASS honestly
+scoped to what was actually verified, rather than either overclaiming or drowning in
+NEEDS_REVIEW. See IMPROVEMENT_CHANGELOG.md "Agent v1 bug 2".
+
+## M3-03 Verification agent only challenges FAIL findings
+
+`backend/app/agents/verification_agent.py` runs only on candidate findings with status
+FAIL, and can only move a finding to NEEDS_REVIEW or PASS, never to FAIL. This matches
+section 6.D's own worked example (the verifier checks and may reject an analyst's
+"missing" claim, it does not go looking for new violations) and keeps the token cost
+bounded to the requirements that are actually being flagged as problems, which is also
+where being wrong is most costly to a user acting on the report. A verifier that could
+also promote NEEDS_REVIEW or PASS to FAIL would let it invent new violations the
+compliance agent never found, which is a different and riskier job than the one
+section 6.D describes.
+
+## M3-04 Retrieval agent is deterministic Python, not an LLM call
+
+`backend/app/agents/retrieval_agent.py` derives `ApplicabilitySignals` from extracted
+facts and product context using keyword matching and simple boolean logic, then
+matches each rule's `applicability.conditions` against those signals directly in code.
+No LLM call. This was a deliberate choice, not a shortcut: applicability decisions
+should be auditable and reproducible given the same facts, and Baseline observation 1
+showed exactly what goes wrong when applicability judgment is left to open-ended LLM
+reasoning mixed in with compliance judgment. The tradeoff is that the signal-derivation
+heuristics (allergen keyword lists, date-marking exemption keywords, warning trigger
+keywords) are only as good as the keyword lists in the file, and will not catch a
+phrasing they do not recognise; this is an explicit, inspectable limitation rather than
+a silent one.

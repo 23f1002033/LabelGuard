@@ -1,0 +1,61 @@
+{
+  "case_id": "IN-001",
+  "system": "agent",
+  "events": [
+    {
+      "timestamp": "2026-08-31T14:56:37.766020Z",
+      "agent": "pipeline",
+      "step": "load_rule_pack",
+      "input_reference": "",
+      "tool_used": "rules.load_rule_pack",
+      "result": "13 rules loaded",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:56:50.740445Z",
+      "agent": "extraction_agent",
+      "step": "extract_label_fields",
+      "input_reference": "",
+      "tool_used": "pytesseract + vision_model",
+      "result": "Extracted label fields: 16/22 fields present",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:56:50.741323Z",
+      "agent": "retrieval_agent",
+      "step": "select_applicable_rules",
+      "input_reference": "",
+      "tool_used": "deterministic_applicability_engine",
+      "result": "Selected applicable rules: 11/13 rules apply",
+      "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': True, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
+    },
+    {
+      "timestamp": "2026-08-31T14:57:06.717894Z",
+      "agent": "compliance_agent",
+      "step": "generate_candidate_findings",
+      "input_reference": "",
+      "tool_used": "llm",
+      "result": "Generated candidate findings: 13 findings, 0 candidate FAIL",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:57:06.718000Z",
+      "agent": "verification_agent",
+      "step": "verify_findings",
+      "input_reference": "",
+      "tool_used": "llm",
+      "result": "Verified findings: 0 FAIL findings challenged, 0 rejected",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:57:06.718574Z",
+      "agent": "pipeline",
+      "step": "generate_final_report",
+      "input_reference": "",
+      "tool_used": "",
+      "result": "NEEDS_REVIEW",
+      "decision": "",
+      "duration_ms": 28953
+    }
+  ]
+}
