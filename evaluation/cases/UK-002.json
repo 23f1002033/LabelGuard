@@ -1,0 +1,41 @@
+{
+  "case_id": "UK-002",
+  "title": "Chocolate bar with unemphasised allergens",
+  "jurisdiction": "UK",
+  "product_category": "packaged_food",
+  "difficulty": "medium",
+  "image": "evaluation/images/UK-002.png",
+  "context": {"imported": false, "single_ingredient": false},
+  "label_spec": {
+    "pack": {
+      "px_per_cm": 40,
+      "width_cm": 9.0,
+      "height_cm": 15.0,
+      "principal_panel_area_cm2": 54.0,
+      "largest_surface_area_cm2": 135.0,
+      "background": "#fbf6ee"
+    },
+    "panels": [
+      {
+        "id": "front",
+        "blocks": [
+          {"type": "text", "text": "NORTHGATE", "font_px": 30, "bold": true},
+          {"type": "text", "text": "Classic Milk Chocolate Bar", "font_px": 22, "bold": true},
+          {"type": "text", "text": "Net weight 45 g", "font_px": 16}
+        ]
+      },
+      {
+        "id": "back",
+        "blocks": [
+          {"type": "text", "text": "Ingredients: Sugar, Cocoa butter, Whole milk powder, Cocoa mass, Emulsifier (soya lecithin), Vanilla extract", "font_px": 13},
+          {"type": "text", "text": "Nutrition Information (per 100 g): Energy 545 kcal, Fat 31.0 g of which saturates 19.0 g, Carbohydrate 57.0 g of which sugars 55.0 g, Fibre 2.0 g, Protein 7.0 g, Salt 0.2 g", "font_px": 13},
+          {"type": "text", "text": "Made in the UK for Northgate Confectionery Ltd, 8 Foundry Road, Sheffield, S3 8AB, United Kingdom", "font_px": 13},
+          {"type": "text", "text": "Best before: 30 NOV 2027", "font_px": 14},
+          {"type": "text", "text": "Lot: NG4471", "font_px": 14},
+          {"type": "text", "text": "Store in a cool, dry place away from direct sunlight. Not suitable for freezing.", "font_px": 13}
+        ]
+      }
+    ]
+  },
+  "notes": "Milk and soya are present in the ingredients but printed in the same plain case as every other ingredient, so neither allergen is emphasised. Isolated single violation."
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "UK-002",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {"rule_id": "RULE-UK-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-003", "expected_status": "FAIL", "rationale": "Whole milk powder and soya lecithin are listed in the same plain text as the rest of the ingredients, with no bold, capitals or other emphasis distinguishing them."},
+    {"rule_id": "RULE-UK-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-006", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-007", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-009", "expected_status": "NOT_APPLICABLE", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-010", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-011", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-012", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "Milk and soya are genuinely present in the ingredients list, which can fool a naive system into marking the allergen requirement satisfied merely because the words appear, rather than checking whether they are actually emphasised.",
+  "notes": "Direct UK counterpart to the IN-003 trap, testing the emphasis mechanic instead of the separate Contains statement mechanic."
+}

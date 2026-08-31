@@ -1,0 +1,20 @@
+{
+  "case_id": "UK-003",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {"rule_id": "RULE-UK-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-003", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-006", "expected_status": "FAIL", "rationale": "The brand name Riverside Mills appears on the front panel, but no full name and UK address of the food business operator appears anywhere on the pack."},
+    {"rule_id": "RULE-UK-FOOD-007", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-009", "expected_status": "NOT_APPLICABLE", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-010", "expected_status": "PASS"},
+    {"rule_id": "RULE-UK-FOOD-011", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-UK-FOOD-012", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "A decorative brand name on the front panel can be mistaken for a compliant food business operator declaration, which requires a full name and a UK address.",
+  "notes": "Tests whether the system requires an actual address, not just a brand name, to satisfy the food business operator rule."
+}

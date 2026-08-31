@@ -1,6 +1,6 @@
 {
   "case_id": "IN-001",
-  "expected_overall": "PASS",
+  "expected_overall": "NEEDS_REVIEW",
   "expected_findings": [
     {"rule_id": "RULE-IN-FOOD-001", "expected_status": "PASS"},
     {"rule_id": "RULE-IN-FOOD-002", "expected_status": "PASS"},
@@ -17,5 +17,5 @@
     {"rule_id": "RULE-IN-FOOD-013", "expected_status": "NOT_APPLICABLE"}
   ],
   "trap": "A naive system often flags allergen or date findings on compliant labels. Any FAIL here is a false positive.",
-  "notes": "Reference case used to measure false positive behaviour."
+  "notes": "Reference case used to measure false positive behaviour. Expected overall is NEEDS_REVIEW, not PASS, because RULE-IN-FOOD-012 (character height) is expected NEEDS_REVIEW and any NEEDS_REVIEW finding makes the overall status NEEDS_REVIEW under the report logic in backend/app/services/report.py."
 }

@@ -1,0 +1,21 @@
+{
+  "case_id": "IN-002",
+  "expected_overall": "FAIL",
+  "expected_findings": [
+    {"rule_id": "RULE-IN-FOOD-001", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-002", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-003", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-004", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-005", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-006", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-007", "expected_status": "FAIL", "rationale": "No Net Wt. or Net Vol. declaration appears anywhere on the pack."},
+    {"rule_id": "RULE-IN-FOOD-008", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-009", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-010", "expected_status": "NOT_APPLICABLE"},
+    {"rule_id": "RULE-IN-FOOD-011", "expected_status": "PASS"},
+    {"rule_id": "RULE-IN-FOOD-012", "expected_status": "NEEDS_REVIEW", "accept_also": ["PASS"]},
+    {"rule_id": "RULE-IN-FOOD-013", "expected_status": "NOT_APPLICABLE"}
+  ],
+  "trap": "A weak system may also flag unrelated rules like allergen or date marking even though only net quantity is actually missing here.",
+  "notes": "Single-violation isolation case."
+}

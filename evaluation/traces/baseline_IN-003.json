@@ -1,0 +1,43 @@
+{
+  "case_id": "IN-003",
+  "system": "baseline",
+  "events": [
+    {
+      "timestamp": "2026-08-31T14:00:51.028664Z",
+      "agent": "baseline",
+      "step": "load_rule_pack",
+      "input_reference": "",
+      "tool_used": "rules.load_rule_pack",
+      "result": "13 rules loaded",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:00:51.299350Z",
+      "agent": "baseline",
+      "step": "ocr_extract",
+      "input_reference": "",
+      "tool_used": "pytesseract",
+      "result": "584 characters extracted",
+      "decision": ""
+    },
+    {
+      "timestamp": "2026-08-31T14:01:11.789698Z",
+      "agent": "baseline",
+      "step": "single_llm_call",
+      "input_reference": "",
+      "tool_used": "llm:IN",
+      "result": "13 findings returned",
+      "decision": "single prompt produced full report, no separate verification"
+    },
+    {
+      "timestamp": "2026-08-31T14:01:11.791168Z",
+      "agent": "baseline",
+      "step": "report_generated",
+      "input_reference": "",
+      "tool_used": "",
+      "result": "PASS",
+      "decision": "",
+      "duration_ms": 20762
+    }
+  ]
+}

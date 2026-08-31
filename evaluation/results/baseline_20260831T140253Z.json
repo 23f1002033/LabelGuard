@@ -1,0 +1,874 @@
+{
+  "system": "baseline",
+  "generated_at": "2026-08-31T14:02:53.691326+00:00",
+  "case_count": 7,
+  "failures": [],
+  "requirement_level_f1": {
+    "precision": 0.75,
+    "recall": 0.857,
+    "f1": 0.8,
+    "tp": 6,
+    "fp": 2,
+    "fn": 1
+  },
+  "flagged_f1": {
+    "precision": 0.643,
+    "recall": 0.9,
+    "f1": 0.75
+  },
+  "status_accuracy": 0.875,
+  "applicability_accuracy": 0.857,
+  "overall_status_accuracy": 0.714,
+  "evidence_grounding_rate": 0.352,
+  "runtime_seconds_total": 162.77,
+  "runtime_seconds_avg": 23.25,
+  "token_usage_total": 41159,
+  "case_results": [
+    {
+      "case_id": "IN-001",
+      "expected_overall": "NEEDS_REVIEW",
+      "actual_overall": "PASS",
+      "overall_match": false,
+      "runtime_seconds": 17.14,
+      "token_usage": {
+        "prompt_tokens": 1716,
+        "completion_tokens": 1537,
+        "total_tokens": 4792
+      },
+      "scores": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "flagged_tp": 0,
+        "flagged_fp": 0,
+        "flagged_fn": 0,
+        "status_matches": 13,
+        "status_total": 13,
+        "applicability_correct": 2,
+        "applicability_total": 2,
+        "evidence_grounded": 4,
+        "evidence_total": 13,
+        "coverage": 13,
+        "coverage_total": 13,
+        "detail": [
+          {
+            "rule_id": "RULE-IN-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-003",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-006",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-007",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-008",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-009",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-010",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-011",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-012",
+            "expected": "PASS",
+            "accept_also": [
+              "NEEDS_REVIEW"
+            ],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-013",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "IN-002",
+      "expected_overall": "FAIL",
+      "actual_overall": "FAIL",
+      "overall_match": true,
+      "runtime_seconds": 24.44,
+      "token_usage": {
+        "prompt_tokens": 1694,
+        "completion_tokens": 1425,
+        "total_tokens": 6231
+      },
+      "scores": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "flagged_tp": 1,
+        "flagged_fp": 0,
+        "flagged_fn": 0,
+        "status_matches": 12,
+        "status_total": 13,
+        "applicability_correct": 2,
+        "applicability_total": 2,
+        "evidence_grounded": 4,
+        "evidence_total": 13,
+        "coverage": 13,
+        "coverage_total": 13,
+        "detail": [
+          {
+            "rule_id": "RULE-IN-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-003",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-006",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-007",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-008",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-009",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-010",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-011",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-012",
+            "expected": "NEEDS_REVIEW",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-013",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "IN-003",
+      "expected_overall": "FAIL",
+      "actual_overall": "PASS",
+      "overall_match": false,
+      "runtime_seconds": 20.77,
+      "token_usage": {
+        "prompt_tokens": 1699,
+        "completion_tokens": 1626,
+        "total_tokens": 5716
+      },
+      "scores": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 1,
+        "flagged_tp": 0,
+        "flagged_fp": 0,
+        "flagged_fn": 1,
+        "status_matches": 11,
+        "status_total": 13,
+        "applicability_correct": 2,
+        "applicability_total": 2,
+        "evidence_grounded": 5,
+        "evidence_total": 13,
+        "coverage": 13,
+        "coverage_total": 13,
+        "detail": [
+          {
+            "rule_id": "RULE-IN-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-003",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-006",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-007",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-008",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-009",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-010",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-011",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": false
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-012",
+            "expected": "NEEDS_REVIEW",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-013",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "IN-004",
+      "expected_overall": "FAIL",
+      "actual_overall": "FAIL",
+      "overall_match": true,
+      "runtime_seconds": 29.4,
+      "token_usage": {
+        "prompt_tokens": 1662,
+        "completion_tokens": 1651,
+        "total_tokens": 6531
+      },
+      "scores": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 0,
+        "flagged_tp": 3,
+        "flagged_fp": 0,
+        "flagged_fn": 0,
+        "status_matches": 12,
+        "status_total": 13,
+        "applicability_correct": 2,
+        "applicability_total": 2,
+        "evidence_grounded": 2,
+        "evidence_total": 13,
+        "coverage": 13,
+        "coverage_total": 13,
+        "detail": [
+          {
+            "rule_id": "RULE-IN-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-003",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-006",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-007",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-008",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-009",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-010",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-011",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-012",
+            "expected": "NEEDS_REVIEW",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-IN-FOOD-013",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "UK-001",
+      "expected_overall": "NEEDS_REVIEW",
+      "actual_overall": "NEEDS_REVIEW",
+      "overall_match": true,
+      "runtime_seconds": 25.79,
+      "token_usage": {
+        "prompt_tokens": 1723,
+        "completion_tokens": 1507,
+        "total_tokens": 6459
+      },
+      "scores": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "flagged_tp": 1,
+        "flagged_fp": 1,
+        "flagged_fn": 0,
+        "status_matches": 10,
+        "status_total": 12,
+        "applicability_correct": 2,
+        "applicability_total": 2,
+        "evidence_grounded": 5,
+        "evidence_total": 12,
+        "coverage": 12,
+        "coverage_total": 12,
+        "detail": [
+          {
+            "rule_id": "RULE-UK-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": false
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-003",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-006",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-007",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-008",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-009",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-010",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-011",
+            "expected": "NEEDS_REVIEW",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-012",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "UK-002",
+      "expected_overall": "FAIL",
+      "actual_overall": "FAIL",
+      "overall_match": true,
+      "runtime_seconds": 25.14,
+      "token_usage": {
+        "prompt_tokens": 1702,
+        "completion_tokens": 1452,
+        "total_tokens": 5946
+      },
+      "scores": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "flagged_tp": 2,
+        "flagged_fp": 1,
+        "flagged_fn": 0,
+        "status_matches": 10,
+        "status_total": 12,
+        "applicability_correct": 2,
+        "applicability_total": 2,
+        "evidence_grounded": 5,
+        "evidence_total": 12,
+        "coverage": 12,
+        "coverage_total": 12,
+        "detail": [
+          {
+            "rule_id": "RULE-UK-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": false
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-003",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-006",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-007",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-008",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-009",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-010",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-011",
+            "expected": "NEEDS_REVIEW",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-012",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "NOT_APPLICABLE",
+            "accepted_match": true
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "UK-003",
+      "expected_overall": "FAIL",
+      "actual_overall": "FAIL",
+      "overall_match": true,
+      "runtime_seconds": 20.09,
+      "token_usage": {
+        "prompt_tokens": 1675,
+        "completion_tokens": 1414,
+        "total_tokens": 5484
+      },
+      "scores": {
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "flagged_tp": 2,
+        "flagged_fp": 3,
+        "flagged_fn": 0,
+        "status_matches": 9,
+        "status_total": 12,
+        "applicability_correct": 0,
+        "applicability_total": 2,
+        "evidence_grounded": 6,
+        "evidence_total": 12,
+        "coverage": 12,
+        "coverage_total": 12,
+        "detail": [
+          {
+            "rule_id": "RULE-UK-FOOD-001",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-002",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": false
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-003",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-004",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-005",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-006",
+            "expected": "FAIL",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-007",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-008",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-009",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "FAIL",
+            "accepted_match": false
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-010",
+            "expected": "PASS",
+            "accept_also": [],
+            "actual": "PASS",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-011",
+            "expected": "NEEDS_REVIEW",
+            "accept_also": [
+              "PASS"
+            ],
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": true
+          },
+          {
+            "rule_id": "RULE-UK-FOOD-012",
+            "expected": "NOT_APPLICABLE",
+            "accept_also": [],
+            "actual": "FAIL",
+            "accepted_match": false
+          }
+        ]
+      }
+    }
+  ]
+}
