@@ -33,11 +33,13 @@ Jurisdictions: India and the United Kingdom (Great Britain).
 
 The scope is a bounded subset, not a claim of full legal coverage:
 
-- India: 13 requirements from the Food Safety and Standards (Labelling and Display)
+- India: 14 requirements from the Food Safety and Standards (Labelling and Display)
   Regulations, 2020, covering name of food, ingredients, nutrition, veg or non-veg
   mark, brand owner name and address, FSSAI logo and licence, net quantity, batch or
-  lot, date marking, country of origin for imports, allergen Contains statement,
-  minimum character height, and Schedule II warning statements.
+  lot, date marking, country of origin for imports, importer name and address for
+  imports (split out from the origin rule in Milestone 4, see docs/decisions.md
+  M4-01), allergen Contains statement, minimum character height, and Schedule II
+  warning statements.
 - UK: 12 requirements from current GOV.UK and Food Standards Agency guidance on the
   Food Information Regulations 2014 and assimilated Regulation (EU) No 1169/2011,
   covering name of the food, ingredients, allergen emphasis, net quantity, date
