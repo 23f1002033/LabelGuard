@@ -3,7 +3,7 @@
   "system": "baseline",
   "events": [
     {
-      "timestamp": "2026-08-31T16:14:02.157662Z",
+      "timestamp": "2026-08-31T17:06:12.760003Z",
       "agent": "baseline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,7 +12,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:14:02.396252Z",
+      "timestamp": "2026-08-31T17:06:13.027775Z",
       "agent": "baseline",
       "step": "ocr_extract",
       "input_reference": "",
@@ -21,7 +21,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:14:26.570359Z",
+      "timestamp": "2026-08-31T17:06:47.579695Z",
       "agent": "baseline",
       "step": "single_llm_call",
       "input_reference": "",
@@ -30,14 +30,14 @@
       "decision": "single prompt produced full report, no separate verification"
     },
     {
-      "timestamp": "2026-08-31T16:14:26.570854Z",
+      "timestamp": "2026-08-31T17:06:47.580928Z",
       "agent": "baseline",
       "step": "report_generated",
       "input_reference": "",
       "tool_used": "",
       "result": "PASS",
       "decision": "",
-      "duration_ms": 24413
+      "duration_ms": 34820
     }
   ]
 }

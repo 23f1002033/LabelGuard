@@ -3,7 +3,7 @@
   "system": "agent",
   "events": [
     {
-      "timestamp": "2026-08-31T16:18:31.133669Z",
+      "timestamp": "2026-08-31T17:10:35.630934Z",
       "agent": "pipeline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,7 +12,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:18:50.828873Z",
+      "timestamp": "2026-08-31T17:10:51.353800Z",
       "agent": "extraction_agent",
       "step": "extract_label_fields",
       "input_reference": "",
@@ -21,7 +21,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:18:50.829305Z",
+      "timestamp": "2026-08-31T17:10:51.356328Z",
       "agent": "retrieval_agent",
       "step": "select_applicable_rules",
       "input_reference": "",
@@ -30,32 +30,32 @@
       "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': True, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
     },
     {
-      "timestamp": "2026-08-31T16:19:06.715366Z",
+      "timestamp": "2026-08-31T17:11:04.298216Z",
       "agent": "compliance_agent",
       "step": "generate_candidate_findings",
       "input_reference": "",
       "tool_used": "llm",
-      "result": "Generated candidate findings: 14 findings, 4 candidate FAIL",
+      "result": "Generated candidate findings: 14 findings, 3 candidate FAIL",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:19:14.368010Z",
+      "timestamp": "2026-08-31T17:11:10.145625Z",
       "agent": "verification_agent",
       "step": "verify_findings",
       "input_reference": "",
       "tool_used": "llm",
-      "result": "Verified findings: 4 FAIL findings challenged, 1 rejected",
+      "result": "Verified findings: 3 FAIL findings challenged, 0 rejected",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:19:14.369644Z",
+      "timestamp": "2026-08-31T17:11:10.150876Z",
       "agent": "pipeline",
       "step": "generate_final_report",
       "input_reference": "",
       "tool_used": "",
       "result": "FAIL",
       "decision": "",
-      "duration_ms": 43235
+      "duration_ms": 34517
     }
   ]
 }

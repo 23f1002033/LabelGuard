@@ -3,7 +3,7 @@
   "system": "agent",
   "events": [
     {
-      "timestamp": "2026-08-31T16:16:51.148932Z",
+      "timestamp": "2026-08-31T17:30:06.463336Z",
       "agent": "pipeline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,25 +12,25 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:17:05.718925Z",
+      "timestamp": "2026-08-31T17:30:06.746069Z",
       "agent": "extraction_agent",
       "step": "extract_label_fields",
       "input_reference": "",
       "tool_used": "pytesseract + vision_model",
-      "result": "Extracted label fields: 16/22 fields present",
+      "result": "Extracted label fields: 0/22 fields present",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:17:05.719651Z",
+      "timestamp": "2026-08-31T17:30:06.746216Z",
       "agent": "retrieval_agent",
       "step": "select_applicable_rules",
       "input_reference": "",
       "tool_used": "deterministic_applicability_engine",
-      "result": "Selected applicable rules: 11/14 rules apply",
-      "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': True, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
+      "result": "Selected applicable rules: 10/14 rules apply",
+      "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': False, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
     },
     {
-      "timestamp": "2026-08-31T16:17:25.355849Z",
+      "timestamp": "2026-08-31T17:30:06.746290Z",
       "agent": "compliance_agent",
       "step": "generate_candidate_findings",
       "input_reference": "",
@@ -39,7 +39,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:17:25.355998Z",
+      "timestamp": "2026-08-31T17:30:06.746298Z",
       "agent": "verification_agent",
       "step": "verify_findings",
       "input_reference": "",
@@ -48,14 +48,14 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:17:25.356647Z",
+      "timestamp": "2026-08-31T17:30:06.746438Z",
       "agent": "pipeline",
       "step": "generate_final_report",
       "input_reference": "",
       "tool_used": "",
       "result": "NEEDS_REVIEW",
       "decision": "",
-      "duration_ms": 34208
+      "duration_ms": 283
     }
   ]
 }

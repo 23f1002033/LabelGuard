@@ -1,39 +1,39 @@
 {
   "system": "baseline",
-  "generated_at": "2026-08-31T16:16:41.266851+00:00",
+  "generated_at": "2026-08-31T17:08:58.821323+00:00",
   "case_count": 15,
   "failures": [],
   "requirement_level_f1": {
-    "precision": 0.842,
+    "precision": 0.727,
     "recall": 0.941,
-    "f1": 0.889,
+    "f1": 0.821,
     "tp": 16,
-    "fp": 3,
+    "fp": 6,
     "fn": 1
   },
   "flagged_f1": {
-    "precision": 0.765,
+    "precision": 0.684,
     "recall": 0.963,
-    "f1": 0.852
+    "f1": 0.8
   },
-  "status_accuracy": 0.899,
-  "applicability_accuracy": 0.923,
+  "status_accuracy": 0.879,
+  "applicability_accuracy": 0.872,
   "overall_status_accuracy": 0.867,
-  "evidence_grounding_rate": 0.328,
-  "runtime_seconds_total": 333.29,
-  "runtime_seconds_avg": 22.22,
-  "token_usage_total": 93037,
+  "evidence_grounding_rate": 0.343,
+  "runtime_seconds_total": 353.52,
+  "runtime_seconds_avg": 23.57,
+  "token_usage_total": 92480,
   "case_results": [
     {
       "case_id": "IN-001",
       "expected_overall": "NEEDS_REVIEW",
       "actual_overall": "PASS",
       "overall_match": false,
-      "runtime_seconds": 23.64,
+      "runtime_seconds": 21.74,
       "token_usage": {
         "prompt_tokens": 1789,
-        "completion_tokens": 1681,
-        "total_tokens": 6689
+        "completion_tokens": 1621,
+        "total_tokens": 5456
       },
       "scores": {
         "tp": 0,
@@ -46,7 +46,7 @@
         "status_total": 14,
         "applicability_correct": 3,
         "applicability_total": 3,
-        "evidence_grounded": 5,
+        "evidence_grounded": 4,
         "evidence_total": 14,
         "coverage": 14,
         "coverage_total": 14,
@@ -159,7 +159,7 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 20.89,
+      "runtime_seconds": 22.27,
       "token_usage": {
         "prompt_tokens": 1767,
         "completion_tokens": 1650,
@@ -289,7 +289,7 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 18.34,
+      "runtime_seconds": 19.15,
       "token_usage": {
         "prompt_tokens": 1772,
         "completion_tokens": 1777,
@@ -419,7 +419,7 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 19.38,
+      "runtime_seconds": 19.81,
       "token_usage": {
         "prompt_tokens": 1735,
         "completion_tokens": 1630,
@@ -549,11 +549,11 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 24.13,
+      "runtime_seconds": 28.24,
       "token_usage": {
         "prompt_tokens": 1752,
-        "completion_tokens": 1537,
-        "total_tokens": 6711
+        "completion_tokens": 1542,
+        "total_tokens": 6266
       },
       "scores": {
         "tp": 1,
@@ -566,7 +566,7 @@
         "status_total": 14,
         "applicability_correct": 2,
         "applicability_total": 4,
-        "evidence_grounded": 6,
+        "evidence_grounded": 3,
         "evidence_total": 14,
         "coverage": 14,
         "coverage_total": 14,
@@ -679,7 +679,7 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 24.13,
+      "runtime_seconds": 23.54,
       "token_usage": {
         "prompt_tokens": 1781,
         "completion_tokens": 1812,
@@ -809,11 +809,11 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 23.37,
+      "runtime_seconds": 32.53,
       "token_usage": {
         "prompt_tokens": 1734,
-        "completion_tokens": 1680,
-        "total_tokens": 6115
+        "completion_tokens": 2018,
+        "total_tokens": 5762
       },
       "scores": {
         "tp": 5,
@@ -941,7 +941,7 @@
       "expected_overall": "NEEDS_REVIEW",
       "actual_overall": "NEEDS_REVIEW",
       "overall_match": true,
-      "runtime_seconds": 22.34,
+      "runtime_seconds": 22.19,
       "token_usage": {
         "prompt_tokens": 1764,
         "completion_tokens": 1621,
@@ -1073,11 +1073,11 @@
       "expected_overall": "NEEDS_REVIEW",
       "actual_overall": "PASS",
       "overall_match": false,
-      "runtime_seconds": 24.41,
+      "runtime_seconds": 34.82,
       "token_usage": {
         "prompt_tokens": 1757,
-        "completion_tokens": 1781,
-        "total_tokens": 6332
+        "completion_tokens": 1550,
+        "total_tokens": 7051
       },
       "scores": {
         "tp": 0,
@@ -1090,7 +1090,7 @@
         "status_total": 14,
         "applicability_correct": 4,
         "applicability_total": 4,
-        "evidence_grounded": 4,
+        "evidence_grounded": 7,
         "evidence_total": 14,
         "coverage": 14,
         "coverage_total": 14,
@@ -1203,7 +1203,7 @@
       "expected_overall": "NEEDS_REVIEW",
       "actual_overall": "NEEDS_REVIEW",
       "overall_match": true,
-      "runtime_seconds": 19.99,
+      "runtime_seconds": 20.09,
       "token_usage": {
         "prompt_tokens": 1723,
         "completion_tokens": 1535,
@@ -1321,7 +1321,7 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 21.44,
+      "runtime_seconds": 20.95,
       "token_usage": {
         "prompt_tokens": 1702,
         "completion_tokens": 1465,
@@ -1439,24 +1439,24 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 20.12,
+      "runtime_seconds": 17.53,
       "token_usage": {
         "prompt_tokens": 1675,
-        "completion_tokens": 1527,
-        "total_tokens": 6275
+        "completion_tokens": 1414,
+        "total_tokens": 5484
       },
       "scores": {
         "tp": 1,
-        "fp": 1,
+        "fp": 2,
         "fn": 0,
         "flagged_tp": 2,
-        "flagged_fp": 2,
+        "flagged_fp": 3,
         "flagged_fn": 0,
-        "status_matches": 10,
+        "status_matches": 9,
         "status_total": 12,
-        "applicability_correct": 1,
+        "applicability_correct": 0,
         "applicability_total": 2,
-        "evidence_grounded": 7,
+        "evidence_grounded": 6,
         "evidence_total": 12,
         "coverage": 12,
         "coverage_total": 12,
@@ -1546,8 +1546,8 @@
             "rule_id": "RULE-UK-FOOD-012",
             "expected": "NOT_APPLICABLE",
             "accept_also": [],
-            "actual": "NOT_APPLICABLE",
-            "accepted_match": true
+            "actual": "FAIL",
+            "accepted_match": false
           }
         ]
       }
@@ -1557,24 +1557,24 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 22.82,
+      "runtime_seconds": 25.05,
       "token_usage": {
         "prompt_tokens": 1709,
-        "completion_tokens": 1556,
-        "total_tokens": 6295
+        "completion_tokens": 1449,
+        "total_tokens": 6770
       },
       "scores": {
         "tp": 1,
-        "fp": 0,
+        "fp": 1,
         "fn": 0,
         "flagged_tp": 2,
-        "flagged_fp": 0,
+        "flagged_fp": 2,
         "flagged_fn": 0,
-        "status_matches": 11,
+        "status_matches": 9,
         "status_total": 12,
-        "applicability_correct": 2,
+        "applicability_correct": 1,
         "applicability_total": 2,
-        "evidence_grounded": 4,
+        "evidence_grounded": 9,
         "evidence_total": 12,
         "coverage": 12,
         "coverage_total": 12,
@@ -1590,15 +1590,15 @@
             "rule_id": "RULE-UK-FOOD-002",
             "expected": "PASS",
             "accept_also": [],
-            "actual": "PASS",
-            "accepted_match": true
+            "actual": "NEEDS_REVIEW",
+            "accepted_match": false
           },
           {
             "rule_id": "RULE-UK-FOOD-003",
             "expected": "NOT_APPLICABLE",
             "accept_also": [],
-            "actual": "NOT_APPLICABLE",
-            "accepted_match": true
+            "actual": "FAIL",
+            "accepted_match": false
           },
           {
             "rule_id": "RULE-UK-FOOD-004",
@@ -1675,20 +1675,20 @@
       "expected_overall": "FAIL",
       "actual_overall": "FAIL",
       "overall_match": true,
-      "runtime_seconds": 25.14,
+      "runtime_seconds": 28.11,
       "token_usage": {
         "prompt_tokens": 1778,
-        "completion_tokens": 1598,
-        "total_tokens": 6610
+        "completion_tokens": 1649,
+        "total_tokens": 7681
       },
       "scores": {
         "tp": 1,
-        "fp": 1,
+        "fp": 2,
         "fn": 0,
         "flagged_tp": 2,
-        "flagged_fp": 1,
+        "flagged_fp": 2,
         "flagged_fn": 0,
-        "status_matches": 10,
+        "status_matches": 9,
         "status_total": 12,
         "applicability_correct": 2,
         "applicability_total": 2,
@@ -1768,8 +1768,8 @@
             "rule_id": "RULE-UK-FOOD-010",
             "expected": "PASS",
             "accept_also": [],
-            "actual": "PASS",
-            "accepted_match": true
+            "actual": "FAIL",
+            "accepted_match": false
           },
           {
             "rule_id": "RULE-UK-FOOD-011",
@@ -1795,7 +1795,7 @@
       "expected_overall": "NEEDS_REVIEW",
       "actual_overall": "NEEDS_REVIEW",
       "overall_match": true,
-      "runtime_seconds": 23.13,
+      "runtime_seconds": 17.48,
       "token_usage": {
         "prompt_tokens": 1665,
         "completion_tokens": 1649,

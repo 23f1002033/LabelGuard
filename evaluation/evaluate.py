@@ -246,7 +246,11 @@ def main() -> int:
     print(f"evidence grounding rate: {evidence_grounding_rate}")
     print(f"avg runtime per case: {summary['runtime_seconds_avg']}s")
     print(f"total tokens: {total_tokens}")
-    print(f"results written to {out_path.relative_to(ROOT)}")
+    try:
+        display_path = out_path.relative_to(ROOT)
+    except ValueError:
+        display_path = out_path
+    print(f"results written to {display_path}")
 
     return 0 if not failures else 1
 

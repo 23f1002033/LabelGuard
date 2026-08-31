@@ -11,24 +11,13 @@ asserts that a product is legally compliant.
 
 ## Status
 
-Milestone 4 of 5 complete: the evaluation set is now 15 cases, the full baseline vs
-agent comparison has been run, the largest failure mode was identified and fixed with
-a real before/after, and 15 rules now exist in the India pack (one was split into two
-correctly-scoped rules along the way). One caveat: the Gemini API key hit its account's
-monthly spending cap mid-way through a final confirmation run; see "Known limitation"
-below. Commands marked "(Milestone N)" do not exist yet.
-
-### Known limitation: last fix not yet re-confirmed at full scale
-
-A real bug (rule notes contradicting what facts the compliance agent actually receives,
-see `IMPROVEMENT_CHANGELOG.md` "M4 largest failure mode + Iteration 1") was found and
-fixed, but the API quota ran out before a fresh 15-case run could confirm its effect on
-the aggregate numbers. The fix was kept, not reverted, because it follows the exact
-pattern already validated at scale in Milestone 3 and is independently checkable
-against the rule pack. The numbers below are the last complete run *before* that fix,
-so they are an honest floor, not an inflated claim. Once the developer resets or raises
-the Gemini spend cap, re-running `evaluation/evaluate.py --system agent` on all 15
-cases is the first thing to do.
+All 5 milestones complete. Submission-ready. 15 evaluation cases, a confirmed
+baseline-vs-agent comparison, a documented largest failure mode with a real
+before/after fix, 84 offline tests, a runnable demo, committed agent trajectory
+traces, and a failure analysis with a hot take grounded in this project's own run
+history. See `docs/failure_analysis.md` for the last of those, and
+`IMPROVEMENT_CHANGELOG.md` for the complete, dated history of every real change and
+the numbers that justified it.
 
 ## Scope
 
@@ -80,6 +69,19 @@ and none is required to run in mock mode.
 
 ## Commands
 
+Fastest way to see it work end to end:
+
+```
+./.venv/bin/python scripts/render_labels.py
+./.venv/bin/python scripts/demo.py
+```
+
+Runs the baseline and the agent side by side on the same real case (UK-003, a
+missing-business-address violation) and prints both systems' findings and traces so
+you can see where they agree and where they differ. Uses `LABELGUARD_MODE` and
+`LLM_API_KEY` from `.env`; without a live key it explains this and runs in mock mode
+instead. Takes about 1 minute in live mode, under 5 seconds in mock mode.
+
 ```
 ./.venv/bin/python scripts/validate_schemas.py
 ```
@@ -116,13 +118,13 @@ rendered and, in live mode, requires `LLM_API_KEY` to be set in `.env`.
 Actual output from the full 15-case set on 2026-08-31, model gemini-2.5-flash:
 
 ```
-requirement-level detection F1: precision=0.842 recall=0.941 f1=0.889
-flagged F1 (FAIL+NEEDS_REVIEW): precision=0.765 recall=0.963 f1=0.852
-status accuracy: 0.899
-applicability accuracy: 0.923
+requirement-level detection F1: precision=0.727 recall=0.941 f1=0.821
+flagged F1 (FAIL+NEEDS_REVIEW): precision=0.684 recall=0.963 f1=0.8
+status accuracy: 0.879
+applicability accuracy: 0.872
 overall status accuracy: 0.867
-evidence grounding rate: 0.328
-avg runtime per case: 22.22s
+evidence grounding rate: 0.343
+avg runtime per case: 23.57s
 ```
 
 ```
@@ -136,13 +138,13 @@ to apples.
 Actual output from the full 15-case set on 2026-08-31, model gemini-2.5-flash:
 
 ```
-requirement-level detection F1: precision=0.941 recall=0.941 f1=0.941
-flagged F1 (FAIL+NEEDS_REVIEW): precision=0.816 recall=0.969 f1=0.886
-status accuracy: 0.944
+requirement-level detection F1: precision=0.938 recall=0.882 f1=0.909
+flagged F1 (FAIL+NEEDS_REVIEW): precision=0.968 recall=0.938 f1=0.952
+status accuracy: 0.975
 applicability accuracy: 1.0
-overall status accuracy: 1.0
-evidence grounding rate: 0.524
-avg runtime per case: 34.51s
+overall status accuracy: 0.933
+evidence grounding rate: 0.514
+avg runtime per case: 32.93s
 ```
 
 ```
@@ -153,25 +155,27 @@ Reads `evaluation/results/baseline_latest.json` and `agent_latest.json` and prin
 metric-by-metric delta table. Warns instead of silently comparing if the two runs
 covered different case counts.
 
-Baseline vs agent on the same 15 cases: F1 0.889 to 0.941, applicability accuracy
-0.923 to 1.0, overall-status accuracy 0.867 to 1.0, evidence grounding 0.328 to 0.524,
-at roughly 1.5x the runtime and 1.7x the tokens of the baseline. These numbers predate
-one further rule-pack fix (see "Known limitation" above); the fix is kept and reasoned
-through in `IMPROVEMENT_CHANGELOG.md`, but not yet re-confirmed at this scale because
-the API quota ran out immediately afterward. See `IMPROVEMENT_CHANGELOG.md` for the
-full story: two baseline failure modes found in Milestone 2, three real bugs found and
-fixed while building the agent in Milestone 3, and the largest failure mode plus its
-fix found in Milestone 4.
+Baseline vs agent on the same 15 cases: F1 0.821 to 0.909, precision 0.727 to 0.938
+(the largest single gap of any run), applicability accuracy 0.872 to a perfect 1.0,
+evidence grounding 0.343 to 0.514, at roughly 1.4x the runtime and 1.7x the tokens of
+the baseline. This is the confirmed final Milestone 4 comparison, run after the
+developer reset the Gemini API's monthly spending cap that had blocked an earlier
+confirmation attempt. See `IMPROVEMENT_CHANGELOG.md` for the full story: two baseline
+failure modes found in Milestone 2, three real bugs found and fixed while building the
+agent in Milestone 3, and the largest failure mode plus its fix found and confirmed in
+Milestone 4.
 
 ```
 ./.venv/bin/python -m pytest
 ```
 
-Runs the backend test suite (62 tests as of Milestone 4): rule pack integrity, report
-and scoring logic, every agent's plumbing in mock mode (extraction, retrieval,
-compliance, verification, the full pipeline), the FastAPI endpoints, the evaluation
+Runs the backend test suite (84 tests): rule pack integrity, report and scoring logic,
+every agent's plumbing and normalization edge cases in mock mode (extraction,
+retrieval, compliance, verification, the full pipeline), evidence-kind mapping, the
+FastAPI endpoints, a true end-to-end run of `evaluate.py` itself, the evaluation
 comparison command, and label renderer determinism. No API key needed, all tests run
-offline.
+offline. Verified to also pass from a completely fresh `venv` outside this repo's
+`.venv`, installing only from `requirements.txt`.
 
 ```
 LABELGUARD_MODE=mock ./.venv/bin/python -m uvicorn app.main:app --app-dir backend --port 8000
@@ -189,11 +193,22 @@ Starts the frontend on port 5173 (proxies `/api` to `http://127.0.0.1:8000`, see
 `frontend/vite.config.js`). Upload a label, pick a jurisdiction, pick agent or
 baseline, and get the same report structure the evaluation harness scores.
 
-Arriving later:
+## Runtime and cost
 
-```
-./.venv/bin/python scripts/demo.py    (Milestone 5)
-```
+Measured on the full 15-case set, model gemini-2.5-flash, 2026-08-31:
+
+| | Baseline | Agent |
+| --- | --- | --- |
+| Avg time per case | 23.6s | 32.9s |
+| Total tokens (15 cases) | 92,480 | 154,628 |
+| Avg tokens per case | ~6,165 | ~10,309 |
+
+These are real token counts from `evaluation/results/*_latest.json`, not estimates.
+Dollar cost depends on your Gemini pricing tier and is not reproduced here since it
+can change independently of this project; check current pricing at
+ai.google.dev/pricing before running the full evaluation repeatedly. `scripts/demo.py`
+(one case, both systems) takes about 1 minute total in live mode. The full test suite
+and `scripts/validate_schemas.py` are both offline and take a few seconds.
 
 ## Layout
 
@@ -220,9 +235,12 @@ evaluation/results/              metric output per run, latest.json plus timesta
 evaluation/traces/               per-case agent trajectory logs
 scripts/validate_schemas.py      data integrity check
 scripts/render_labels.py         deterministic synthetic label renderer
+scripts/demo.py                  baseline vs agent, side by side, on one real case
 docs/architecture.md             scope, pipeline, agent roles, risks
 docs/evaluation.md               metric definitions and how numbers are produced
 docs/decisions.md                assumptions made and why
+docs/agent_traces.md             trace file format, worked examples, how to regenerate
+docs/failure_analysis.md         the actual biggest failure mode found, and the hot take
 ```
 
 ## Data handling

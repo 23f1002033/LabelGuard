@@ -3,7 +3,7 @@
   "system": "baseline",
   "events": [
     {
-      "timestamp": "2026-08-31T16:27:38.600079Z",
+      "timestamp": "2026-08-31T17:30:05.914839Z",
       "agent": "baseline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,7 +12,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:27:38.913863Z",
+      "timestamp": "2026-08-31T17:30:06.186042Z",
       "agent": "baseline",
       "step": "ocr_extract",
       "input_reference": "",
@@ -21,23 +21,23 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:28:02.415218Z",
+      "timestamp": "2026-08-31T17:30:06.186110Z",
       "agent": "baseline",
       "step": "single_llm_call",
       "input_reference": "",
-      "tool_used": "llm:IN",
-      "result": "14 findings returned",
-      "decision": "single prompt produced full report, no separate verification"
+      "tool_used": "mock",
+      "result": "14 mock findings returned",
+      "decision": "LABELGUARD_MODE=mock, no live model call made"
     },
     {
-      "timestamp": "2026-08-31T16:28:02.416295Z",
+      "timestamp": "2026-08-31T17:30:06.186287Z",
       "agent": "baseline",
       "step": "report_generated",
       "input_reference": "",
       "tool_used": "",
-      "result": "PASS",
+      "result": "NEEDS_REVIEW",
       "decision": "",
-      "duration_ms": 23816
+      "duration_ms": 271
     }
   ]
 }

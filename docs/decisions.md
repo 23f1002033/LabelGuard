@@ -208,7 +208,7 @@ two new, thematically similar but not identical labels) would have left open the
 question of whether any observed difference came from the jurisdiction or from
 incidental differences in the label content.
 
-## M4-04 Gemini monthly spend cap blocked final confirmation, fixes kept anyway
+## M4-04 Gemini monthly spend cap blocked final confirmation, fixes kept anyway (resolved)
 
 The API key hit `RESOURCE_EXHAUSTED` (monthly spending cap, confirmed with a second
 minimal call immediately after, same error) partway through a final confirmation run,
@@ -220,8 +220,13 @@ fabricate a plausible-looking final run, both fixes were kept because: the reaso
 for each is sound and independently checkable against the rule pack and the FSSAI/UK
 source text; RULE-IN-FOOD-007's fix follows the exact pattern already validated at
 scale for six other rules in Milestone 3 (M3-02); and RULE-UK-FOOD-007's fix was
-live-verified on the case that found it, just not re-confirmed at full-set scale. The
-numbers reported for Milestone 4 (see IMPROVEMENT_CHANGELOG.md) are therefore the last
-complete run before the RULE-IN-FOOD-007 fix, honestly labelled as such, and are if
-anything an underestimate of the agent's current performance. A full re-run is the
-first item for Milestone 5 once the developer resets or raises the spend cap.
+live-verified on the case that found it, just not re-confirmed at full-set scale.
+
+Resolved: the developer reset the spend cap. Before spending more on a full run, both
+individually-uncertain fixes were re-checked in isolation first (cheap, fast) to rule
+out a persistent bug before attributing anything to noise: RULE-UK-FOOD-007 on UK-004
+and RULE-UK-FOOD-006 on UK-005 (a new mismatch that had appeared in the interim
+confirmation attempt) both returned their expected status on a clean re-check,
+consistent with temperature-0 sampling noise rather than a real defect. Only then was
+the full baseline vs agent comparison re-run to completion; see IMPROVEMENT_CHANGELOG.md
+"M4 confirmed after quota reset" for the final numbers.

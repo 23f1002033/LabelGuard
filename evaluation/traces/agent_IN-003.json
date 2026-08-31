@@ -3,7 +3,7 @@
   "system": "agent",
   "events": [
     {
-      "timestamp": "2026-08-31T16:17:59.258140Z",
+      "timestamp": "2026-08-31T17:10:07.127135Z",
       "agent": "pipeline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,7 +12,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:18:11.617713Z",
+      "timestamp": "2026-08-31T17:10:20.014239Z",
       "agent": "extraction_agent",
       "step": "extract_label_fields",
       "input_reference": "",
@@ -21,7 +21,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:18:11.618257Z",
+      "timestamp": "2026-08-31T17:10:20.014913Z",
       "agent": "retrieval_agent",
       "step": "select_applicable_rules",
       "input_reference": "",
@@ -30,7 +30,7 @@
       "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': True, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
     },
     {
-      "timestamp": "2026-08-31T16:18:25.195666Z",
+      "timestamp": "2026-08-31T17:10:30.345625Z",
       "agent": "compliance_agent",
       "step": "generate_candidate_findings",
       "input_reference": "",
@@ -39,7 +39,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:18:30.826582Z",
+      "timestamp": "2026-08-31T17:10:35.313857Z",
       "agent": "verification_agent",
       "step": "verify_findings",
       "input_reference": "",
@@ -48,14 +48,14 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:18:30.827259Z",
+      "timestamp": "2026-08-31T17:10:35.315012Z",
       "agent": "pipeline",
       "step": "generate_final_report",
       "input_reference": "",
       "tool_used": "",
-      "result": "FAIL",
+      "result": "NEEDS_REVIEW",
       "decision": "",
-      "duration_ms": 31568
+      "duration_ms": 28187
     }
   ]
 }

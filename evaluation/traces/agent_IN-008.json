@@ -3,7 +3,7 @@
   "system": "agent",
   "events": [
     {
-      "timestamp": "2026-08-31T16:21:11.126334Z",
+      "timestamp": "2026-08-31T17:12:56.524005Z",
       "agent": "pipeline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,16 +12,16 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:21:22.698439Z",
+      "timestamp": "2026-08-31T17:13:13.412959Z",
       "agent": "extraction_agent",
       "step": "extract_label_fields",
       "input_reference": "",
       "tool_used": "pytesseract + vision_model",
-      "result": "Extracted label fields: 16/22 fields present",
+      "result": "Extracted label fields: 17/22 fields present",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:21:22.699199Z",
+      "timestamp": "2026-08-31T17:13:13.415459Z",
       "agent": "retrieval_agent",
       "step": "select_applicable_rules",
       "input_reference": "",
@@ -30,32 +30,32 @@
       "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': True, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': [], 'warning_trigger': []}"
     },
     {
-      "timestamp": "2026-08-31T16:21:41.593113Z",
+      "timestamp": "2026-08-31T17:13:25.141343Z",
       "agent": "compliance_agent",
       "step": "generate_candidate_findings",
       "input_reference": "",
       "tool_used": "llm",
-      "result": "Generated candidate findings: 14 findings, 0 candidate FAIL",
+      "result": "Generated candidate findings: 14 findings, 1 candidate FAIL",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:21:41.593233Z",
+      "timestamp": "2026-08-31T17:13:31.221723Z",
       "agent": "verification_agent",
       "step": "verify_findings",
       "input_reference": "",
       "tool_used": "llm",
-      "result": "Verified findings: 0 FAIL findings challenged, 0 rejected",
+      "result": "Verified findings: 1 FAIL findings challenged, 1 rejected",
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:21:41.593959Z",
+      "timestamp": "2026-08-31T17:13:31.222508Z",
       "agent": "pipeline",
       "step": "generate_final_report",
       "input_reference": "",
       "tool_used": "",
       "result": "NEEDS_REVIEW",
       "decision": "",
-      "duration_ms": 30457
+      "duration_ms": 34698
     }
   ]
 }

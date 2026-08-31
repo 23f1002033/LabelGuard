@@ -3,7 +3,7 @@
   "system": "agent",
   "events": [
     {
-      "timestamp": "2026-08-31T16:23:57.774852Z",
+      "timestamp": "2026-08-31T17:15:36.141322Z",
       "agent": "pipeline",
       "step": "load_rule_pack",
       "input_reference": "",
@@ -12,7 +12,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:24:09.710529Z",
+      "timestamp": "2026-08-31T17:15:52.077306Z",
       "agent": "extraction_agent",
       "step": "extract_label_fields",
       "input_reference": "",
@@ -21,7 +21,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:24:09.711227Z",
+      "timestamp": "2026-08-31T17:15:52.078006Z",
       "agent": "retrieval_agent",
       "step": "select_applicable_rules",
       "input_reference": "",
@@ -30,7 +30,7 @@
       "decision": "signals: {'single_ingredient_food': False, 'imported_product': False, 'contains_listed_allergen': False, 'date_marking_exempt_category': False, 'needs_storage_or_use_instructions': True, 'origin_declaration_required': False, 'nutrition_declaration_exempt': False, 'schedule_two_trigger': ['aspartame'], 'warning_trigger': ['aspartame']}"
     },
     {
-      "timestamp": "2026-08-31T16:24:26.451906Z",
+      "timestamp": "2026-08-31T17:16:07.895597Z",
       "agent": "compliance_agent",
       "step": "generate_candidate_findings",
       "input_reference": "",
@@ -39,7 +39,7 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:24:33.396891Z",
+      "timestamp": "2026-08-31T17:16:14.182953Z",
       "agent": "verification_agent",
       "step": "verify_findings",
       "input_reference": "",
@@ -48,14 +48,14 @@
       "decision": ""
     },
     {
-      "timestamp": "2026-08-31T16:24:33.397744Z",
+      "timestamp": "2026-08-31T17:16:14.183796Z",
       "agent": "pipeline",
       "step": "generate_final_report",
       "input_reference": "",
       "tool_used": "",
       "result": "FAIL",
       "decision": "",
-      "duration_ms": 35622
+      "duration_ms": 38042
     }
   ]
 }
