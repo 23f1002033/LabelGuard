@@ -47,7 +47,8 @@
       "validation_type": "text",
       "required_facts": ["ingredients_text", "ingredients_list"],
       "evidence_hint": "Look for a heading such as Ingredients followed by a comma separated list.",
-      "suggested_fix": "Add a titled ingredients list ordered by descending weight at the time of manufacture."
+      "suggested_fix": "Add a titled ingredients list ordered by descending weight at the time of manufacture.",
+      "notes": "The MVP checks that a titled ingredients list is present with more than one ingredient. It cannot verify true manufacturing weights, so it does not independently confirm the printed order is actually descending by weight; it only checks that a percentage shown on the first listed ingredient, if any, is plausible as the largest component."
     },
     {
       "rule_id": "RULE-IN-FOOD-003",
@@ -109,7 +110,8 @@
       "validation_type": "hybrid",
       "required_facts": ["fssai_licence_number"],
       "evidence_hint": "FSSAI logo with a 14 digit licence number printed near it.",
-      "suggested_fix": "Print the FSSAI logo together with the 14 digit licence number in a contrasting colour."
+      "suggested_fix": "Print the FSSAI logo together with the 14 digit licence number in a contrasting colour.",
+      "notes": "The MVP checks that an FSSAI licence number is present and readable. It does not independently verify FSSAI logo presence beyond the licence number, or measure colour contrast against the background."
     },
     {
       "rule_id": "RULE-IN-FOOD-007",
@@ -159,7 +161,8 @@
       "validation_type": "text",
       "required_facts": ["manufacture_or_packaging_date", "expiry_or_use_by_date"],
       "evidence_hint": "Date block showing manufacturing or packing date and an expiry or use by date.",
-      "suggested_fix": "Print both the date of manufacture or packaging and the expiry or use by date together in one place."
+      "suggested_fix": "Print both the date of manufacture or packaging and the expiry or use by date together in one place.",
+      "notes": "The MVP checks that both a manufacture/packaging date and an expiry/use by date are present. It does not independently verify that the two are visually grouped at one place on the pack."
     },
     {
       "rule_id": "RULE-IN-FOOD-010",

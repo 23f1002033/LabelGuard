@@ -100,6 +100,16 @@ Statuses are PASS, FAIL, NEEDS_REVIEW and NOT_APPLICABLE. A verifier verdict of
 `rejected` demotes a FAIL to NEEDS_REVIEW or PASS with a recorded reason. It never
 promotes a finding to FAIL on its own.
 
+Implemented as of Milestone 3:
+`backend/app/agents/extraction_agent.py`, `retrieval_agent.py`, `compliance_agent.py`,
+`verification_agent.py`, orchestrated by `pipeline.py`. One deviation from the table
+above: the retrieval agent makes no LLM call at all, it is deterministic Python
+matching `ApplicabilitySignals` (derived from facts and product context) against each
+rule's `applicability.conditions`. See docs/decisions.md M3-04 for why. The
+verification agent, in the implementation, only receives and only ever runs on
+candidate findings with status FAIL, not on every finding, to keep the check targeted
+and the token cost bounded; see docs/decisions.md M3-03.
+
 ## 6. Data structures
 
 - `ExtractedField`: present, value, confidence, evidence list, extractor

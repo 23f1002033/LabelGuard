@@ -11,10 +11,11 @@ asserts that a product is legally compliant.
 
 ## Status
 
-Milestone 2 of 5 complete: baseline system, deterministic label renderer, first 7
-evaluation cases, and the first real baseline metrics. The verification-oriented
-agent pipeline and the web UI arrive in Milestone 3. Commands marked "(Milestone N)"
-do not exist yet.
+Milestone 3 of 5 complete: the four-agent pipeline (extraction, retrieval, compliance,
+verification), a FastAPI backend, and a React frontend, wired together end to end from
+upload to report. Expanding the case set to 10-15 with harder trap cases, and the
+baseline-vs-agent comparison writeup, land in Milestone 4. Commands marked
+"(Milestone N)" do not exist yet.
 
 ## Scope
 
@@ -35,7 +36,7 @@ This is a bounded subset of each country's labelling law, not full coverage. See
 ## Prerequisites
 
 - Python 3.11 or newer (developed on 3.14.0)
-- Node 20 or newer (developed on 24.7.0), needed from Milestone 3
+- Node 20 or newer (developed on 24.7.0), needed to run the frontend
 - tesseract, for OCR: `brew install tesseract` on macOS,
   `sudo apt-get install tesseract-ocr` on Debian or Ubuntu
 
@@ -45,11 +46,13 @@ This is a bounded subset of each country's labelling law, not full coverage. See
 python3 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
 cp .env.example .env
+npm --prefix frontend install
 ```
 
 Then edit `.env` and set `LLM_BASE_URL`, `LLM_API_KEY` and `LLM_MODEL` for your
-provider. Any OpenAI compatible endpoint works. No key is committed and none is
-required to run in mock mode.
+provider. The default is Gemini through its OpenAI-compatible endpoint (get a key at
+aistudio.google.com/apikey); any OpenAI-compatible endpoint works. No key is committed
+and none is required to run in mock mode.
 
 ## Modes
 
@@ -105,26 +108,63 @@ evidence grounding rate: 0.352
 avg runtime per case: 23.25s
 ```
 
-See `IMPROVEMENT_CHANGELOG.md` for what these numbers mean and the two concrete
-failure patterns already observed (applicability confusion on conditional rules, and
-run-to-run instability on one allergen case).
+```
+./.venv/bin/python evaluation/evaluate.py --system agent
+```
+
+Runs the full agent pipeline (extraction, retrieval, compliance, verification) over
+the same 7 cases and the same annotations as the baseline, so the comparison is
+apples to apples.
+
+Actual output from the 7-case set on 2026-08-31, model gemini-2.5-flash, confirmed
+stable across two consecutive live runs:
+
+```
+requirement-level detection F1: precision=1.0 recall=1.0 f1=1.0
+flagged F1 (FAIL+NEEDS_REVIEW): precision=0.867 recall=1.0 f1=0.929
+status accuracy: 0.966
+applicability accuracy: 1.0
+overall status accuracy: 1.0
+evidence grounding rate: 0.478
+avg runtime per case: 32.4s
+```
+
+Baseline vs agent on the same 7 cases: F1 0.8 to 1.0, applicability accuracy 0.857 to
+1.0, overall-status accuracy 0.714 to 1.0, evidence grounding 0.352 to 0.48, at roughly
+1.4x the runtime and 1.8x the tokens of the baseline. See `IMPROVEMENT_CHANGELOG.md`
+for the full story: two baseline failure modes found, three real bugs found and fixed
+while building the agent, and what each fix actually changed.
 
 ```
 ./.venv/bin/python -m pytest
 ```
 
-Runs the backend test suite (27 tests as of Milestone 2): rule pack integrity, report
-status and scoring logic, baseline agent plumbing in mock mode, and label renderer
-determinism. No API key needed, all tests run offline.
+Runs the backend test suite (59 tests as of Milestone 3): rule pack integrity, report
+and scoring logic, every agent's plumbing in mock mode (extraction, retrieval,
+compliance, verification, the full pipeline), the FastAPI endpoints, and label
+renderer determinism. No API key needed, all tests run offline.
+
+```
+LABELGUARD_MODE=mock ./.venv/bin/python -m uvicorn app.main:app --app-dir backend --port 8000
+```
+
+Starts the backend API. `GET /api/health`, `GET /api/jurisdictions`, and
+`POST /api/analyze` (multipart: `image`, `jurisdiction`, `system`, optional `imported`
+and `single_ingredient`). Drop `LABELGUARD_MODE=mock` to use the live model.
+
+```
+npm --prefix frontend run dev
+```
+
+Starts the frontend on port 5173 (proxies `/api` to `http://127.0.0.1:8000`, see
+`frontend/vite.config.js`). Upload a label, pick a jurisdiction, pick agent or
+baseline, and get the same report structure the evaluation harness scores.
 
 Arriving later:
 
 ```
-./.venv/bin/python evaluation/evaluate.py --system agent          (Milestone 3)
-./.venv/bin/python evaluation/evaluate.py --compare                (Milestone 4)
-./.venv/bin/python scripts/demo.py                                 (Milestone 3)
-./.venv/bin/python -m uvicorn app.main:app --app-dir backend       (Milestone 3)
-npm --prefix frontend run dev                                      (Milestone 3)
+./.venv/bin/python evaluation/evaluate.py --compare    (Milestone 4)
+./.venv/bin/python scripts/demo.py                      (Milestone 5)
 ```
 
 ## Layout
@@ -132,9 +172,18 @@ npm --prefix frontend run dev                                      (Milestone 3)
 ```
 backend/app/models/schemas.py     agent interfaces and report data structures
 backend/app/config.py             environment configuration
-backend/app/agents/baseline_agent.py  single-call baseline system
+backend/app/main.py               FastAPI app
+backend/app/api/analyze.py        POST /api/analyze: upload validation, runs baseline or agent
+backend/app/api/meta.py           GET /api/health, GET /api/jurisdictions
+backend/app/agents/baseline_agent.py    single-call baseline system
+backend/app/agents/extraction_agent.py  vision + OCR to structured, evidence-tagged facts
+backend/app/agents/retrieval_agent.py   deterministic applicability engine, no LLM call
+backend/app/agents/compliance_agent.py  judges only the rules retrieval marked applicable
+backend/app/agents/verification_agent.py  challenges candidate FAIL findings only
+backend/app/agents/pipeline.py    orchestrates the four agents into one report
 backend/app/services/            OCR, LLM client, rule loading, scoring, report building, tracing
 backend/tests/                   pytest suite, all offline
+frontend/                        Vite + React UI: upload, jurisdiction, analyze, report, agent trace
 rules/                           jurisdiction rule packs and their JSON schema
 evaluation/cases/                inputs, including the label spec each image renders from
 evaluation/annotations/          expected findings, never shown to the systems under test

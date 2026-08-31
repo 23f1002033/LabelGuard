@@ -82,7 +82,8 @@
       "validation_type": "text",
       "required_facts": ["ingredients_text", "ingredients_list"],
       "evidence_hint": "Ingredients heading followed by the list, heaviest ingredient first.",
-      "suggested_fix": "Add a full ingredients list in descending order of weight."
+      "suggested_fix": "Add a full ingredients list in descending order of weight.",
+      "notes": "The MVP checks that a full ingredients list is present with more than one ingredient. It cannot verify true manufacturing weights, so it does not independently confirm the printed order is actually descending by weight; it only checks that a percentage shown on the first listed ingredient, if any, is plausible as the largest component."
     },
     {
       "rule_id": "RULE-UK-FOOD-003",
@@ -136,7 +137,8 @@
       "validation_type": "text",
       "required_facts": ["best_before_date", "use_by_date"],
       "evidence_hint": "Best before or use by date printed on the pack, with the date or a pointer to where the date is shown.",
-      "suggested_fix": "Print a best before or use by date, choosing use by where the food is highly perishable."
+      "suggested_fix": "Print a best before or use by date, choosing use by where the food is highly perishable.",
+      "notes": "The MVP checks that at least one of a best before or use by date is present. It does not independently judge whether the food has a safety-related shelf life that specifically requires a use by date rather than best before."
     },
     {
       "rule_id": "RULE-UK-FOOD-006",
@@ -151,7 +153,8 @@
       "validation_type": "text",
       "required_facts": ["business_name_address", "importer_name_address"],
       "evidence_hint": "Address block on the back or side panel including a UK address and postcode.",
-      "suggested_fix": "Add the food business operator name with a full UK address."
+      "suggested_fix": "Add the food business operator name with a full UK address.",
+      "notes": "The MVP checks that a name and address block is present for the food business operator or importer. It does not independently verify that the address is genuinely within the UK."
     },
     {
       "rule_id": "RULE-UK-FOOD-007",
